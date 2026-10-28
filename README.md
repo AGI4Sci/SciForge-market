@@ -37,7 +37,7 @@ node scripts/export-market-data.mjs \
 ```bash
 npm ci
 npm run dev          # 本地预览（默认 http://localhost:3000/）
-npm run build:pages  # 静态导出到 dist/client（GITHUB_PAGES=true）
+npm run build:pages  # 数据校验 + 静态导出到 dist/client（默认 /SciForge-market）
 npm test             # build:pages + 渲染断言
 npm run lint
 ```
