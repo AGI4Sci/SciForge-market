@@ -1,16 +1,15 @@
-import { marketSnapshot } from "@/lib/market-data";
+import { catalogSnapshot } from "@/lib/catalog-data";
 
 export function MarketFooter() {
   return (
     <footer className="site-footer">
       <div className="shell footer-inner">
-        <p className="footer-brand">SciForge 插件市场</p>
+        <p className="footer-brand">SciForge 插件与能力目录</p>
         <details className="footer-details">
-          <summary>数据说明</summary>
+          <summary>目录说明</summary>
           <p>
-            插件数据来自应用内市场的同一生成来源（生成于{" "}
-            {marketSnapshot.generatedAt}，记录运行时 {marketSnapshot.dshRuntimeVersion}），
-            本页为构建时快照；页面不访问后端，也不提供插件制品下载。
+            目录为构建时快照（生成于 {catalogSnapshot.generatedAt}）。展示插件、内置模块与开发资源的能力和适配状态，
+            不提供下载、安装入口或制品文件。
           </p>
         </details>
       </div>

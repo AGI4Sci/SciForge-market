@@ -1,78 +1,81 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  EMPTY_FILTER,
   buildCatalogQuery,
-  categoriesOf,
-  filterCards,
+  filterCatalog,
   normalizeQuery,
-  parseCatalogState,
-} from "../lib/catalog.ts";
+  parseCatalogFilter,
+  uniqueValues,
+} from "../lib/catalog-filter.ts";
 
-const labels = { text: "文本", utility: "实用工具", science: "科学计算" };
-const cards = [
+const items = [
   {
-    slug: "text-stats",
-    name: "@sciforge/plugin-text-stats",
     title: "文本统计",
-    listSummary: "统计文本的字符、词数、行数与段落。",
-    publisher: "sciforge-market",
+    summary: "统计文本",
+    kind: "plugin",
     categories: ["text", "utility"],
+    features: ["统计字符"],
+    scenarios: ["核对字数"],
+    status: "documented",
   },
   {
-    slug: "unit-conversion",
-    name: "@sciforge/plugin-unit-conversion",
-    title: "科学单位换算",
-    listSummary: "换算同维度科学单位，支持温度转换。",
-    publisher: "sciforge-market",
-    categories: ["science", "utility"],
+    title: "Artifact Versions",
+    summary: "科研制品版本",
+    kind: "builtin",
+    categories: ["research", "artifacts"],
+    features: ["不可变版本"],
+    scenarios: ["保存实验产物"],
+    status: "integrated",
+  },
+  {
+    title: "OpenSpec 探索",
+    summary: "先探索需求",
+    kind: "skill",
+    categories: ["development"],
+    features: ["问题探索"],
+    scenarios: ["动手前梳理需求"],
+    status: "development",
+  },
+  {
+    title: "测试夹具",
+    summary: "合成测试输入",
+    kind: "fixture",
+    categories: ["testing"],
+    features: ["验证测试行为"],
+    scenarios: ["回归测试"],
+    status: "testing",
   },
 ];
 
-test("normalizeQuery 去首尾空白、压缩空白、限制长度", () => {
-  assert.equal(normalizeQuery("  单位   换算 "), "单位 换算");
+const allowed = {
+  kinds: uniqueValues(items.map((item) => item.kind)),
+  categories: uniqueValues(items.flatMap((item) => item.categories)),
+  statuses: uniqueValues(items.map((item) => item.status)),
+};
+
+test("normalizeQuery collapses whitespace and caps length", () => {
+  assert.equal(normalizeQuery("  a   b  "), "a b");
   assert.equal(normalizeQuery("x".repeat(200)).length, 120);
 });
 
-test("parseCatalogState 对未知分类安全回退", () => {
-  assert.deepEqual(parseCatalogState("?q=%20单位%20&category=nope", ["text", "utility", "science"]), {
-    query: "单位",
-    category: "all",
+test("parseCatalogFilter accepts known values and falls back safely", () => {
+  assert.deepEqual(parseCatalogFilter("?type=builtin&category=research&status=integrated&q=%E7%89%88%E6%9C%AC", allowed), {
+    query: "版本", kind: "builtin", category: "research", status: "integrated",
   });
-  assert.deepEqual(parseCatalogState("?category=science", ["text", "utility", "science"]), {
-    query: "",
-    category: "science",
-  });
+  assert.deepEqual(parseCatalogFilter("?type=nope&category=nope&status=nope", allowed), EMPTY_FILTER);
 });
 
-test("buildCatalogQuery 只在非默认值时输出参数", () => {
-  assert.equal(buildCatalogQuery({ query: "", category: "all" }), "");
-  assert.equal(buildCatalogQuery({ query: "单位", category: "all" }), "q=%E5%8D%95%E4%BD%8D");
-  assert.equal(
-    buildCatalogQuery({ query: "", category: "text" }),
-    "category=text",
-  );
+test("buildCatalogQuery keeps the URL shareable", () => {
+  assert.equal(buildCatalogQuery(EMPTY_FILTER), "");
+  assert.equal(buildCatalogQuery({ query: "版本", kind: "builtin", category: "research", status: "integrated" }), "q=%E7%89%88%E6%9C%AC&type=builtin&category=research&status=integrated");
 });
 
-test("filterCards 支持名称/ID/简介/标签，且大小写无关", () => {
-  assert.deepEqual(filterCards(cards, { query: "TEXT-STATS", category: "all" }, labels).map((c) => c.slug), [
-    "text-stats",
-  ]);
-  assert.deepEqual(filterCards(cards, { query: "温度", category: "all" }, labels).map((c) => c.slug), [
-    "unit-conversion",
-  ]);
-  assert.deepEqual(filterCards(cards, { query: "实用工具", category: "all" }, labels).map((c) => c.slug), [
-    "text-stats",
-    "unit-conversion",
-  ]);
-});
-
-test("filterCards 的搜索与分类组合生效", () => {
-  assert.deepEqual(filterCards(cards, { query: "单位", category: "text" }, labels), []);
-  assert.deepEqual(filterCards(cards, { query: "单位", category: "science" }, labels).map((c) => c.slug), [
-    "unit-conversion",
-  ]);
-});
-
-test("categoriesOf 只返回有内容的分类，去重保序", () => {
-  assert.deepEqual(categoriesOf(cards), ["text", "utility", "science"]);
+test("filterCatalog combines type, category, status and search", () => {
+  assert.deepEqual(filterCatalog(items, { ...EMPTY_FILTER, query: "字符" }).map((item) => item.kind), ["plugin"]);
+  assert.deepEqual(filterCatalog(items, { ...EMPTY_FILTER, kind: "builtin" }).map((item) => item.title), ["Artifact Versions"]);
+  assert.deepEqual(filterCatalog(items, { ...EMPTY_FILTER, category: "testing" }).map((item) => item.kind), ["fixture"]);
+  assert.deepEqual(filterCatalog(items, { ...EMPTY_FILTER, status: "development" }).map((item) => item.kind), ["skill"]);
+  assert.deepEqual(filterCatalog(items, { ...EMPTY_FILTER, query: "需求", status: "development", category: "development" }).map((item) => item.kind), ["skill"]);
+  assert.equal(filterCatalog(items, { query: "不存在" }).length, 0);
 });

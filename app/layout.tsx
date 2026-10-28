@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./catalog.css";
 import { MarketFooter } from "@/components/MarketFooter";
 import { MarketHeader } from "@/components/MarketHeader";
 
@@ -7,17 +8,17 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: {
-    default: "SciForge 插件市场",
-    template: "%s · SciForge 插件市场",
+    default: "SciForge 插件与能力目录",
+    template: "%s · SciForge 插件与能力目录",
   },
   description:
-    "浏览 SciForge 官方插件：用途、权限、兼容版本与安装方式。预览版不提供制品下载。",
+    "浏览 SciForge 的插件、内置模块、技能、模板与测试资源；展示能力与适配状态，不提供下载。",
   openGraph: {
     type: "website",
     locale: "zh_CN",
-    siteName: "SciForge 插件市场",
-    title: "SciForge 插件市场",
-    description: "浏览 SciForge 官方插件：用途、权限、兼容版本与安装方式。",
+    siteName: "SciForge 插件与能力目录",
+    title: "SciForge 插件与能力目录",
+    description: "浏览 SciForge 的插件、内置模块、技能、模板与测试资源；不提供下载。",
   },
 };
 

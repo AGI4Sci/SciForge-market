@@ -21,19 +21,19 @@ export function MarketHeader() {
   return (
     <header className="site-header">
       <div className="shell header-inner">
-        <Link className="brand" href="/" aria-label="SciForge 插件市场首页">
+        <Link className="brand" href="/" aria-label="SciForge 插件与能力目录首页">
           <span className="brand-mark" aria-hidden="true">
             SF
           </span>
-          <span className="brand-text">SciForge 插件市场</span>
-          <span className="brand-tag">预览版</span>
+          <span className="brand-text">SciForge 目录</span>
+          <span className="brand-tag">公开</span>
         </Link>
         <nav className="main-nav" aria-label="主导航">
           <Link href="/" aria-current={browseActive ? "page" : undefined}>
-            浏览插件
+            全部资源
           </Link>
           <Link href="/install" aria-current={installActive ? "page" : undefined}>
-            安装指南
+            目录说明
           </Link>
           <a href={PROJECT_URL} target="_blank" rel="noreferrer">
             SciForge 项目 <span aria-hidden="true">↗</span>
