@@ -1,7 +1,7 @@
 {
   "format": 1,
   "kind": "public-catalog",
-  "generatedAt": "2026-10-28T04:04:44.595382+00:00",
+  "generatedAt": "2026-10-28T04:49:16.984413+00:00",
   "counts": {
     "plugin": 11,
     "builtin": 26,
@@ -131,7 +131,7 @@
       ],
       "status": "partial",
       "statusLabel": "部分功能已验证",
-      "statusDetail": "测试构建已验证安装、创建检查点和基本生命周期；列出、预览、恢复和真实对话仍在适配。",
+      "statusDetail": "测试构建已验证安装、创建、列出、预览、恢复和生命周期；真实对话自动快照仍未验证。",
       "related": [
         {
           "slug": "domain-git-checkpoints",
