@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: {
     default: "SciForge 插件与能力目录",
-    template: "%s · SciForge 插件与能力目录",
+    template: "%s · SciForge 目录",
   },
   description:
     "浏览 SciForge 的插件、内置模块、技能、模板与测试资源；展示能力与适配状态，不提供下载。",
