@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 
+type CopyStatus = "idle" | "copied" | "failed";
+
 export function PluginActions({ pluginId }: { pluginId: string }) {
-  const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState<CopyStatus>("idle");
 
   async function copy() {
     let ok = false;
@@ -30,23 +32,23 @@ export function PluginActions({ pluginId }: { pluginId: string }) {
         ok = false;
       }
     }
-    setCopied(ok);
-    if (ok) window.setTimeout(() => setCopied(false), 2000);
+    setStatus(ok ? "copied" : "failed");
+    window.setTimeout(() => setStatus("idle"), 2500);
   }
 
   return (
-    <div className="market-actions">
+    <div className="plugin-actions">
+      <code className="plugin-id">{pluginId}</code>
       <button type="button" className="market-action market-action-primary" onClick={copy}>
-        {copied ? "已复制插件 ID" : "复制插件 ID"}
+        {status === "copied" ? "已复制" : status === "failed" ? "复制失败" : "复制插件 ID"}
       </button>
-      <button
-        type="button"
-        className="market-action market-action-disabled"
-        disabled
-        title="预览版暂不提供插件包下载；安装请在 SciForge 桌面端完成。"
-      >
-        下载暂未开放
-      </button>
+      <p className="plugin-action-status" role="status" aria-live="polite">
+        {status === "copied"
+          ? "已复制到剪贴板。"
+          : status === "failed"
+            ? "复制失败：请手动选中上面的插件 ID 复制。"
+            : ""}
+      </p>
     </div>
   );
 }

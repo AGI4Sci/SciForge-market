@@ -12,6 +12,13 @@ export const metadata: Metadata = {
   },
   description:
     "浏览 SciForge 官方插件：用途、权限、兼容版本与安装方式。预览版不提供制品下载。",
+  openGraph: {
+    type: "website",
+    locale: "zh_CN",
+    siteName: "SciForge 插件市场",
+    title: "SciForge 插件市场",
+    description: "浏览 SciForge 官方插件：用途、权限、兼容版本与安装方式。",
+  },
 };
 
 export default function RootLayout({

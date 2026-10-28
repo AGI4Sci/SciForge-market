@@ -806,3 +806,193 @@ details summary:focus-visible {
     animation-iteration-count: 1 !important;
   }
 }
+/* ===== 第二轮：目录交互 / 详情技术信息 / 安装 ===== */
+
+.market-search {
+  position: relative;
+}
+
+.market-search input {
+  padding-right: 82px;
+}
+
+.market-search-clear {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.market-search-clear:hover {
+  background: var(--paper-deep);
+  color: var(--ink);
+}
+
+.market-search-clear:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+}
+
+.market-empty p {
+  margin: 0 0 10px;
+}
+
+.plugin-actions {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.plugin-id {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--paper-deep);
+  color: var(--ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.plugin-actions .market-action {
+  justify-self: start;
+}
+
+.plugin-action-status {
+  min-height: 20px;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.install-target {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--white);
+}
+
+.install-target span {
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.install-target strong {
+  font-size: 16px;
+}
+
+.install-target code {
+  color: var(--ink-soft);
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.install-status {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  border: 1px solid #e7dcc6;
+  border-radius: 10px;
+  background: #fbf5e8;
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.install-status strong {
+  color: var(--coral-dark);
+}
+
+.market-panel + .market-panel {
+  margin-top: 18px;
+}
+
+.market-technical {
+  display: block;
+  margin-top: 18px;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+}
+
+.market-technical summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  list-style: none;
+}
+
+.market-technical summary::-webkit-details-marker {
+  display: none;
+}
+
+.market-technical summary::after {
+  content: "+";
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.market-technical[open] summary::after {
+  content: "–";
+}
+
+.market-technical .details-body {
+  padding: 0 0 18px;
+}
+
+.market-technical table + .market-meta {
+  margin-top: 14px;
+}
+
+.market-notes {
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+
+.inline-link {
+  color: var(--coral-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 14px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+@media (max-width: 720px) {
+  .footer-inner {
+    align-items: flex-start;
+  }
+}
+
+.main-nav a[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}

@@ -7,6 +7,10 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "发现科研插件（预览版）",
   description: "为 SciForge 添加实用工具与科研能力。",
+  openGraph: {
+    title: "发现科研插件 · SciForge 插件市场",
+    description: "为 SciForge 添加实用工具与科研能力。",
+  },
 };
 
 export default function Home() {

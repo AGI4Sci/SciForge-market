@@ -7,28 +7,28 @@
 
 - 只发布公开审阅页面：列表、搜索/分类、插件详情、安装指南。
 - 不上传插件制品、不开放真实下载；安装与验签以桌面端市场为准。
-- 不包含未上架插件（blocked）及其内部原因；不放本机路径、凭据、发布密钥。
+- 不包含未上架插件及其内部原因；不放本机路径、凭据、发布密钥。
 - 本仓库不手工维护插件的版本 / 权限 / 哈希——见下节数据管线。
 
-## 数据管线（单一来源）
+## 数据管线
 
-站点数据由现有生成流程的产物**导出**而来，而不是在这里手写第二套：
+站点展示的技术字段由发布流程导出，而不是在本仓库手工维护：
 
-1. 私有仓生成 `market/index.json`（`scripts/dsh-plugin-market-index.mjs` 产出）。
+1. 在受控的发布流程中生成市场索引。
 2. 本仓 `scripts/export-market-data.mjs` 按公开白名单导出为 `lib/market-public.json`：
 
 ```bash
 node scripts/export-market-data.mjs \
-  --index     <私有仓>/market/index.json \
-  --plugins   <私有仓>/plugins \
-  --artifacts <私有仓>/market/artifacts \
-  --commit    <生成索引对应的私有仓 commit> \
+  --index     <index.json> \
+  --plugins   <plugins-dir> \
+  --artifacts <artifacts-dir> \
+  --commit    <source-commit> \
   --out       lib/market-public.json
 ```
 
 - 导出字段（白名单）：`slug/name/title/version/publisher/categories/tools(name,id,effect)/`
   `hostDependencies/sizeBytes/sha256/artifactFile/engineRange/signature(algorithm,publisherId)`。
-- 不导出：`blocked` 清单、内部路径（`source`）、`entry`、`runtimeNote`、签名本体。
+- 不导出：未上架清单、内部路径、入口实现、运行时诊断、签名本体。
 - 字段缺失或形状不符时脚本直接失败，不猜、不补。
 - `lib/plugin-copy.ts` 只保存说明性文案（摘要、场景、示例、许可备注），与白名单数据合并渲染。
 
@@ -69,3 +69,4 @@ SITE_BASE_PATH=/SciForge-market npm run build:pages
 - [首页（手机）](docs/screenshots/home-390.png)
 - [详情页（手机）](docs/screenshots/detail-390.png)
 - [安装指南（手机）](docs/screenshots/install-390.png)
+- [页面不存在（桌面）](docs/screenshots/404-1440.png)

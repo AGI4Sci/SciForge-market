@@ -27,7 +27,7 @@ export const pluginCopy: Readonly<Record<string, PluginCopy>> = {
     examples: [
       {
         title: "统计一段中英混排文本",
-        body: 'text_stats_count { "text": "SciForge 你好 world" }\n→ characters 17 · cjkCharacters 2 · latinWords 2 · words 4 · utf8Bytes 20'
+        body: 'text_stats_count { "text": "SciForge 你好 world" }\n→ characters 17 · cjkCharacters 2 · latinWords 2 · words 4 · utf8Bytes 21'
       },
       {
         title: "查询完整口径与上限",

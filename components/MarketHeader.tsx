@@ -1,8 +1,23 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const PROJECT_URL = "https://github.com/AGI4Sci/SciForge";
 
 export function MarketHeader() {
+  const [path, setPath] = useState("");
+
+  useEffect(() => {
+    const apply = () => setPath(window.location.pathname);
+    apply();
+    window.addEventListener("popstate", apply);
+    return () => window.removeEventListener("popstate", apply);
+  }, []);
+
+  const installActive = path.includes("/install");
+  const browseActive = path !== "" && !installActive;
+
   return (
     <header className="site-header">
       <div className="shell header-inner">
@@ -14,8 +29,12 @@ export function MarketHeader() {
           <span className="brand-tag">预览版</span>
         </Link>
         <nav className="main-nav" aria-label="主导航">
-          <Link href="/">浏览插件</Link>
-          <Link href="/install">安装指南</Link>
+          <Link href="/" aria-current={browseActive ? "page" : undefined}>
+            浏览插件
+          </Link>
+          <Link href="/install" aria-current={installActive ? "page" : undefined}>
+            安装指南
+          </Link>
           <a href={PROJECT_URL} target="_blank" rel="noreferrer">
             SciForge 项目 <span aria-hidden="true">↗</span>
           </a>

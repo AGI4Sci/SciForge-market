@@ -8,9 +8,9 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
-    "build:pages": "node scripts/patch-vinext-static-export.mjs && GITHUB_PAGES=true npm run build",
+    "build:pages": "node scripts/check-market-data.mjs && node scripts/patch-vinext-static-export.mjs && GITHUB_PAGES=true npm run build",
     "start": "vinext start",
-    "test": "npm run build:pages && node --test tests/rendered-html.test.mjs",
+    "test": "npm run build:pages && node --test tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "export:data": "node scripts/export-market-data.mjs"
   },

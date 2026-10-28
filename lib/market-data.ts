@@ -46,8 +46,6 @@ type WhitelistPlugin = (typeof raw)["plugins"][number];
 
 export const marketSnapshot = {
   mode: "same-generation-source" as const,
-  sourceFile: raw.sourceFile,
-  sourceCommit: raw.sourceCommit,
   generatedAt: raw.generatedAt,
   exportedAt: raw.exportedAt,
   dshRuntimeVersion: raw.dshRuntimeVersion

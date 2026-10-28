@@ -28,6 +28,10 @@ export async function generateMetadata({
   return {
     title: plugin.title,
     description: plugin.summary,
+    openGraph: {
+      title: `${plugin.title} · SciForge 插件市场`,
+      description: plugin.summary,
+    },
   };
 }
 
@@ -43,7 +47,7 @@ export default async function PluginDetailPage({
   return (
     <main id="main-content">
       <section className="market-hero market-hero-detail">
-        <div className="shell">
+        <div className="install-shell">
           <p className="market-crumb">
             <Link href="/">← 返回插件市场</Link>
           </p>
@@ -57,39 +61,82 @@ export default async function PluginDetailPage({
       </section>
 
       <section className="market-body">
-        <div className="shell">
-          <div className="market-detail-grid">
-            <article className="market-panel">
-              <h2>用途</h2>
-              <p>{plugin.summary}</p>
+        <div className="install-shell">
+          <article className="market-panel">
+            <h2>适用场景</h2>
+            <ul>
+              {plugin.useCases.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
 
-              <h2>适用场景</h2>
-              <ul>
-                {plugin.useCases.map((item) => (
-                  <li key={item}>{item}</li>
+            <h2>已验证示例</h2>
+            {plugin.examples.map((example) => (
+              <figure key={example.title} className="market-example">
+                <figcaption>{example.title}</figcaption>
+                <pre>
+                  <code>{example.body}</code>
+                </pre>
+              </figure>
+            ))}
+            <p className="market-note">
+              示例已于 2026-10-27 在插件实现上运行核对；工具调用格式仅供开发者参考。
+            </p>
+          </article>
+
+          <article className="market-panel">
+            <h2>安装</h2>
+            <p>
+              在 SciForge 桌面端安装：扩展中心 → 市场 → 搜索插件 → 核对权限 → 批准并安装。
+            </p>
+            <PluginActions pluginId={plugin.name} />
+            <p className="market-note">
+              <Link href={`/install?plugin=${plugin.slug}`}>查看安装指南 →</Link>
+            </p>
+            <p className="market-note">
+              当前公开发行版（v0.2.16）尚未包含插件市场入口；以上步骤适用于包含市场的构建。预览版不提供插件包下载。
+            </p>
+          </article>
+
+          <article className="market-panel">
+            <h2>权限与兼容性</h2>
+            <table className="market-table">
+              <thead>
+                <tr>
+                  <th scope="col">工具</th>
+                  <th scope="col">效果</th>
+                </tr>
+              </thead>
+              <tbody>
+                {plugin.tools.map((tool) => (
+                  <tr key={tool.id}>
+                    <td>
+                      <code>{tool.name}</code>
+                    </td>
+                    <td>{effectLabels[tool.effect]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="market-note">宿主依赖：{plugin.hostDependencies.join("、")}</p>
+            <p className="market-note">{plugin.compatibility}</p>
+            {plugin.notes.length > 0 ? (
+              <ul className="market-notes">
+                {plugin.notes.map((note) => (
+                  <li key={note}>{note}</li>
                 ))}
               </ul>
+            ) : null}
+          </article>
 
-              <h2>真实示例</h2>
-              {plugin.examples.map((example) => (
-                <figure key={example.title} className="market-example">
-                  <figcaption>{example.title}</figcaption>
-                  <pre>
-                    <code>{example.body}</code>
-                  </pre>
-                </figure>
-              ))}
-
-              <h2>兼容版本</h2>
-              <p>{plugin.compatibility}</p>
-
-              <h2>权限</h2>
+          <details className="market-details market-technical">
+            <summary>技术信息（工具 ID、哈希、签名与许可）</summary>
+            <div className="details-body">
               <table className="market-table">
                 <thead>
                   <tr>
                     <th scope="col">工具</th>
                     <th scope="col">能力 ID</th>
-                    <th scope="col">效果</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -101,18 +148,10 @@ export default async function PluginDetailPage({
                       <td>
                         <code>{tool.id}</code>
                       </td>
-                      <td>{effectLabels[tool.effect]}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-              <p className="market-note">
-                宿主依赖：{plugin.hostDependencies.join("、")} · 安装时需在桌面端核对并批准以上权限。
-              </p>
-            </article>
-
-            <aside className="market-panel market-panel-side">
-              <h2>包信息</h2>
               <dl className="market-meta">
                 <div>
                   <dt>包大小</dt>
@@ -141,28 +180,8 @@ export default async function PluginDetailPage({
                   <dd>{plugin.license}</dd>
                 </div>
               </dl>
-
-              <h2>操作</h2>
-              <PluginActions pluginId={plugin.name} />
-              <p className="market-note">
-                预览版暂不提供插件包下载；安装请在 SciForge 桌面端完成。
-              </p>
-              <p className="market-note">
-                <Link href="/install">查看安装指南 →</Link>
-              </p>
-
-              {plugin.notes.length > 0 ? (
-                <>
-                  <h2>说明</h2>
-                  <ul className="market-notes">
-                    {plugin.notes.map((note) => (
-                      <li key={note}>{note}</li>
-                    ))}
-                  </ul>
-                </>
-              ) : null}
-            </aside>
-          </div>
+            </div>
+          </details>
         </div>
       </section>
     </main>

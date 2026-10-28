@@ -2,17 +2,17 @@
 /**
  * 导出版物白名单数据（单一来源，不手工维护第二套版本/权限/哈希）。
  *
- * 输入来自现有生成流程的产物：
- *   --index     <path>  market/index.json（scripts/dsh-plugin-market-index.mjs 生成）
- *   --plugins   <dir>   插件源码目录（读取 package.json 的 engines.dsh 兼容范围）
+ * 输入来自现有发布流程的产物：
+ *   --index     <path>  market/index.json（由发布流程生成）
+ *   --plugins   <dir>   已审核插件目录（读取 package.json 的 engines.dsh 兼容范围）
  *   --artifacts <dir>   制品目录（可选；读取 META-INF/sciforge-signature.json 的
  *                       algorithm 与 publisherId。不含签名本体，不含任何密钥）
- *   --commit    <sha>   生成索引所对应的私有仓 commit（溯源）
+ *   --commit    <sha>   生成索引所对应的源码 commit（溯源）
  *   --out       <path>  输出文件（提交进本仓，构建时读取）
  *
  * 规则：
  * - 只搬运“已发表字段”，字段缺失/形状不符立即失败，不猜、不补。
- * - 不导出 blocked 清单、不导出 source 内部路径、不导出 entry/runtimeNote。
+ * - 不导出未上架清单、不导出 source 内部路径、不导出 entry/runtimeNote。
  * - 输出为构建时快照；站点运行期不访问任何后端。
  */
 import { execFileSync } from "node:child_process";
@@ -118,8 +118,6 @@ for (const plugin of index.plugins) {
 const output = {
   format: 1,
   kind: "public-whitelist",
-  sourceFile: "market/index.json",
-  sourceCommit: args.commit,
   generatedAt: index.generatedAt,
   dshRuntimeVersion: index.dshRuntimeVersion,
   exportedAt: new Date().toISOString(),

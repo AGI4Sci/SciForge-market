@@ -1,8 +1,6 @@
 {
   "format": 1,
   "kind": "public-whitelist",
-  "sourceFile": "market/index.json",
-  "sourceCommit": "00648de3ec4f86eb32bec5206cc09b40119ec477",
   "generatedAt": "2026-10-25T04:01:14.212Z",
   "dshRuntimeVersion": "0.2.0-rc.2",
   "exportedAt": "2026-10-27T10:01:16.003Z",
