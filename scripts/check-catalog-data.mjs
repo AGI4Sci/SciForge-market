@@ -12,7 +12,7 @@ const root = resolve(new URL("..", import.meta.url).pathname);
 const path = resolve(root, "lib/catalog-public.json");
 
 const expected = { plugin: 11, builtin: 26, skill: 4, template: 1, fixture: 3 };
-const allowedStatuses = new Set(["partial", "adapting", "integrated", "documented", "development", "testing"]);
+const allowedStatuses = new Set(["partial", "verified", "adapting", "integrated", "documented", "development", "testing"]);
 const allowedKinds = new Set(Object.keys(expected));
 const forbidden = [
   "sourcePath", "sha256", "sourceCommit", "candidate", "artifactFile",

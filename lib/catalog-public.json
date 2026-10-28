@@ -1,7 +1,7 @@
 {
   "format": 1,
   "kind": "public-catalog",
-  "generatedAt": "2026-10-28T04:49:16.984413+00:00",
+  "generatedAt": "2026-10-28T06:33:42.709967+00:00",
   "counts": {
     "plugin": 11,
     "builtin": 26,
@@ -251,9 +251,9 @@
         "把实验数据做成可复现的论文图",
         "比较两次绘图输入和输出"
       ],
-      "status": "partial",
-      "statusLabel": "部分功能已验证",
-      "statusDetail": "渲染链路已验证真实出图；打包宿主只完成部分能力适配，不能视为完整可用。",
+      "status": "verified",
+      "statusLabel": "测试构建已验证",
+      "statusDetail": "在 SciForge Acceptance 测试构建中完成 status、map-data、render、rerun、compare、版本记录和生命周期验证；这是测试构建结果，不是正式发行版。",
       "related": [
         {
           "slug": "domain-scientific-plotting",

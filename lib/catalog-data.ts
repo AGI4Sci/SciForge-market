@@ -1,7 +1,7 @@
 import raw from "./catalog-public.json";
 
 export type CatalogKind = "plugin" | "builtin" | "skill" | "template" | "fixture";
-export type CatalogStatus = "partial" | "adapting" | "integrated" | "documented" | "development" | "testing";
+export type CatalogStatus = "partial" | "verified" | "adapting" | "integrated" | "documented" | "development" | "testing";
 
 export type CatalogRelated = Readonly<{
   slug: string;
@@ -83,6 +83,7 @@ export function catalogPath(item: Pick<CatalogItem, "slug">): string {
 
 export const statusTone: Readonly<Record<CatalogStatus, "ok" | "progress" | "muted" | "dev">> = {
   partial: "progress",
+  verified: "ok",
   adapting: "progress",
   integrated: "ok",
   documented: "muted",

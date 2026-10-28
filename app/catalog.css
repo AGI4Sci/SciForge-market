@@ -92,6 +92,11 @@
   color: #9c6b18;
 }
 
+.catalog-status.status-verified {
+  border-color: color-mix(in srgb, #2f855a 45%, var(--border));
+  color: #2f855a;
+}
+
 .catalog-status.status-muted {
   color: var(--muted-foreground);
 }
