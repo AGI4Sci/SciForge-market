@@ -3,6 +3,7 @@ import { readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 
 const distRoot = new URL("../dist/client/", import.meta.url);
+const english = JSON.parse(await readFile(new URL("../lib/catalog-public.en.json", import.meta.url), "utf8"));
 const payload = JSON.parse(await readFile(new URL("../lib/catalog-public.json", import.meta.url), "utf8"));
 
 function outputUrl(path) {
@@ -37,7 +38,8 @@ test("homepage publishes all five groups and the full count", async () => {
 test("all 29 catalog details are directly exported", async () => {
   for (const item of payload.items) {
     const html = await render(`/catalog/${item.slug}`);
-    assert.ok(html.includes(item.title), `${item.slug}: title`);
+    const title = item.kind === "plugin" || item.kind === "builtin" ? english[item.slug].title : item.title;
+    assert.ok(html.includes(`<h1>${title}</h1>`), `${item.slug}: title`);
     assert.ok(html.includes(item.summary), `${item.slug}: summary`);
     assert.ok(html.includes(item.statusLabel), `${item.slug}: status`);
     for (const feature of item.features) assert.ok(html.includes(feature), `${item.slug}:${feature}`);
@@ -84,6 +86,7 @@ test("help page describes the catalog and contains no install promise", async ()
   assert.match(html, /目录说明/);
   assert.match(html, /资源类型定义/);
   assert.match(html, /适配状态说明/);
+  assert.match(html, /<footer[^>]*>[\s\S]*<a href="[^"]*\/">← 返回目录<\/a>/);
   assert.match(html, /测试夹具/);
   assert.doesNotMatch(html, /打开扩展中心/);
   assert.doesNotMatch(html, /确认权限/);
@@ -116,7 +119,6 @@ test("no internal paths, hashes, artifacts or source maps are published", async 
 });
 
 test("both languages publish every resource and keep the scope note in the footer", async () => {
-  const english = JSON.parse(await readFile(new URL("../lib/catalog-public.en.json", import.meta.url), "utf8"));
   assert.deepEqual(Object.keys(english).sort(), payload.items.map(item => item.slug).sort());
   const pages = [["/", "Plugins and capabilities"], ["/install", "Resource types"],
     ...payload.items.map(item => [`/catalog/${item.slug}`, english[item.slug].summary])];

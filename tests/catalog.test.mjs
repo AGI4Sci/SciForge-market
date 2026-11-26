@@ -11,7 +11,8 @@ import {
 
 const items = [
   {
-    title: "文本统计",
+    title: "Text Statistics",
+    searchAlias: "文本统计",
     summary: "统计文本",
     kind: "plugin",
     categories: ["text", "utility"],
@@ -72,6 +73,7 @@ test("buildCatalogQuery keeps the URL shareable", () => {
 });
 
 test("filterCatalog combines type, category, status and search", () => {
+  assert.deepEqual(filterCatalog(items, { ...EMPTY_FILTER, query: "文本统计" }).map((item) => item.title), ["Text Statistics"]);
   assert.deepEqual(filterCatalog(items, { ...EMPTY_FILTER, query: "字符" }).map((item) => item.kind), ["plugin"]);
   assert.deepEqual(filterCatalog(items, { ...EMPTY_FILTER, kind: "builtin" }).map((item) => item.title), ["Artifact Versions"]);
   assert.deepEqual(filterCatalog(items, { ...EMPTY_FILTER, category: "testing" }).map((item) => item.kind), ["fixture"]);

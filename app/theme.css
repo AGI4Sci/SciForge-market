@@ -25,6 +25,12 @@
 .language-link:hover,
 .theme-select select:hover { background: light-dark(#e9f2fd, #283e5a); }
 
+.catalog-help-grid > .market-panel {
+  align-self: start;
+  block-size: fit-content;
+  padding-block-end: clamp(16px, 2vw, 24px);
+}
+
 .catalog-definitions {
   display: grid;
   margin: 0;

@@ -52,7 +52,7 @@ export function CatalogHelp({ locale }: { locale: Locale }) {
         <div className="install-shell"><h1>{siteCopy[locale].about}</h1></div>
       </section>
       <div className="market-body">
-        <div className="install-shell market-detail-grid">
+        <div className="install-shell market-detail-grid catalog-help-grid">
           <section className="market-panel">
             <h2>{copy.resourceHeading}</h2>
             <dl className="catalog-definitions">

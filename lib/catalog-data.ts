@@ -16,6 +16,7 @@ export type CatalogItem = Readonly<{
   slug: string;
   kind: CatalogKind;
   title: string;
+  searchAlias?: string;
   summary: string;
   categories: readonly string[];
   features: readonly string[];
@@ -75,9 +76,16 @@ export const categoryLabels: Readonly<Record<string, string>> = {
   testing: "测试资源",
 };
 
-export const catalogItems = raw.items as readonly CatalogItem[];
-
 const englishCopy: Record<string, Pick<CatalogItem, "title" | "summary" | "features" | "scenarios" | "statusDetail">> = english;
+
+export const catalogItems: readonly CatalogItem[] = raw.items.map((rawItem) => {
+  const item = rawItem as CatalogItem;
+  const title = englishCopy[item.slug]?.title;
+  if ((item.kind === "plugin" || item.kind === "builtin") && title && title !== item.title) {
+    return { ...item, title, searchAlias: item.title };
+  }
+  return item;
+});
 
 const englishItems = catalogItems.map((item): CatalogItem => ({
   ...item,

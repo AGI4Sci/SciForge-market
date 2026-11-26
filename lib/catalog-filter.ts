@@ -11,6 +11,7 @@ export type CatalogFilterState = Readonly<{
 
 export type CatalogFilterItem = Readonly<{
   title: string;
+  searchAlias?: string;
   summary: string;
   kind: string;
   categories: readonly string[];
@@ -66,6 +67,7 @@ export function filterCatalog<T extends CatalogFilterItem>(items: readonly T[], 
     if (!query) return true;
     const haystack = [
       item.title,
+      item.searchAlias,
       item.summary,
       item.kind,
       ...item.categories,
