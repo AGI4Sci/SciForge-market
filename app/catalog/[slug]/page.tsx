@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { sitePath } from "@/lib/site-path";
 import { notFound } from "next/navigation";
 import {
   catalogSnapshot,
@@ -7,6 +7,7 @@ import {
   catalogItems,
   getCatalogItem,
   catalogPath,
+  statusTone,
 } from "@/lib/catalog-data";
 
 export const dynamic = "force-static";
@@ -41,11 +42,11 @@ export default async function CatalogDetailPage({ params }: { params: Promise<{ 
       <section className="market-hero market-hero-detail">
         <div className="install-shell">
           <p className="market-crumb">
-            <Link href="/">← 返回目录</Link>
+            <a href={sitePath("/")}>← 返回目录</a>
           </p>
           <div className="catalog-detail-kicker">
             <span className={`catalog-kind kind-${item.kind}`}>{kindLabel}</span>
-            <span className={`catalog-status status-${item.status}`}>{item.statusLabel}</span>
+            <span className={`catalog-status status-${statusTone[item.status]}`}>{item.statusLabel}</span>
           </div>
           <h1>{item.title}</h1>
           <p className="market-lead">{item.summary}</p>
@@ -56,7 +57,7 @@ export default async function CatalogDetailPage({ params }: { params: Promise<{ 
       </section>
 
       <section className="market-body">
-        <div className="install-shell">
+        <div className="install-shell market-detail-grid">
           <article className="market-panel">
             <h2>{item.kind === "fixture" ? "验证目的" : item.kind === "skill" || item.kind === "template" ? "用途" : "核心能力"}</h2>
             <ul>
@@ -73,7 +74,7 @@ export default async function CatalogDetailPage({ params }: { params: Promise<{ 
             <h2>状态说明</h2>
             <p>{item.statusDetail}</p>
             <p className="market-note">
-              本网站展示 SciForge 的插件与能力信息，暂不提供下载。目录中的“适配中”不等于已可安装或已发布。
+              本网站展示 SciForge 的插件与能力信息，暂不提供下载。
             </p>
             {item.related.length > 0 ? (
               <>
@@ -81,7 +82,7 @@ export default async function CatalogDetailPage({ params }: { params: Promise<{ 
                 <ul className="catalog-related">
                   {item.related.map((related) => (
                     <li key={`${related.slug}-${related.relation}`}>
-                      <Link href={catalogPath(related)}>{related.title}</Link>
+                      <a href={sitePath(catalogPath(related))}>{related.title}</a>
                       <span>{related.relation}</span>
                     </li>
                   ))}

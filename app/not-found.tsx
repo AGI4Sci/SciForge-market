@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { sitePath } from "@/lib/site-path";
 
 export const metadata: Metadata = {
   title: "页面不存在",
@@ -23,9 +23,9 @@ export default function NotFound() {
         <div className="install-shell">
           <div className="market-panel">
             <p>
-              <Link className="inline-link" href="/">
+              <a className="inline-link" href={sitePath("/")}>
                 返回插件与能力目录
-              </Link>
+              </a>
             </p>
           </div>
         </div>

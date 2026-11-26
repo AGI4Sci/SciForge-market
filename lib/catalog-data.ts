@@ -67,6 +67,8 @@ export const categoryLabels: Readonly<Record<string, string>> = {
   presentation: "展示",
   compute: "计算",
   terminal: "终端",
+  interaction: "交互",
+  workflow: "工作流",
   development: "开发资源",
   testing: "测试资源",
 };

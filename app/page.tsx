@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { CatalogDirectory } from "@/components/MarketCatalog";
-import { catalogItems, catalogSnapshot } from "@/lib/catalog-data";
+import { catalogItems } from "@/lib/catalog-data";
 
 export const dynamic = "force-static";
 
@@ -16,16 +16,14 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main id="main-content">
-      <section className="market-hero">
-        <div className="shell">
-          <p className="market-eyebrow">SciForge · 公开目录</p>
+      <section className="shell catalog-hero">
+        <div className="catalog-hero-copy">
           <h1>插件与能力目录</h1>
-          <p className="market-lead">
-            浏览 SciForge 的插件、内置模块、技能、模板与测试资源。展示的是能力与适配状态，不代表已开放安装或下载。
-          </p>
-          <p className="catalog-hero-count">
-            {catalogSnapshot.total} 个公开条目 · 插件 {catalogSnapshot.counts.plugin} · 内置模块 {catalogSnapshot.counts.builtin}
-          </p>
+          <p>浏览 SciForge 插件、内置模块和开发资源。</p>
+          <small>公开展示 · 暂不提供下载</small>
+        </div>
+        <div className="catalog-hero-art" aria-hidden="true">
+          <span /><span /><span /><span />
         </div>
       </section>
 

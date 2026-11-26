@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { sitePath } from "@/lib/site-path";
 import { notFound } from "next/navigation";
 import { catalogItems, getCatalogItem } from "@/lib/catalog-data";
 
@@ -29,7 +29,7 @@ export default async function LegacyPluginPage({ params }: { params: Promise<{ s
     <main id="main-content">
       <section className="market-hero">
         <div className="install-shell">
-          <p className="market-crumb"><Link href="/">← 返回目录</Link></p>
+          <p className="market-crumb"><a href={sitePath("/")}>← 返回目录</a></p>
           <h1>{item.title}</h1>
           <p className="market-lead">这个旧地址仍然可以访问；插件详情已移到新的目录页面。</p>
         </div>
@@ -37,7 +37,7 @@ export default async function LegacyPluginPage({ params }: { params: Promise<{ s
       <section className="market-body">
         <div className="install-shell">
           <div className="market-panel">
-            <p><Link className="inline-link" href={`/catalog/${item.slug}`}>查看新版详情 →</Link></p>
+            <p><a className="inline-link" href={sitePath(`/catalog/${item.slug}`)}>查看新版详情 →</a></p>
             <p className="market-note">本网站只展示能力与适配信息，不提供插件包下载或安装入口。</p>
           </div>
         </div>
