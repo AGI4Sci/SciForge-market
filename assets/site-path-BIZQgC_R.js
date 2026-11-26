@@ -1,1 +1,0 @@
-function e(e){return`/SciForge-market${e.endsWith(`/`)?e:`${e}/`}`}export{e as t};
