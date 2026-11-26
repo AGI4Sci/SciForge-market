@@ -23,7 +23,7 @@
 npm ci
 npm run dev
 npm run lint
-npm test             # 数据检查 + 静态导出 + 14 项渲染/数据断言
+npm test             # 数据检查 + 静态导出 + 双语渲染与数据验证
 npm run build:pages  # 校验数据 + 默认 /SciForge-market 静态导出 + base path 守卫
 ```
 

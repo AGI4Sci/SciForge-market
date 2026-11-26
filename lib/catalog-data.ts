@@ -1,4 +1,6 @@
 import raw from "./catalog-public.json";
+import english from "./catalog-public.en.json";
+import { statusLabels, type Locale } from "./locale";
 
 export type CatalogKind = "plugin" | "builtin" | "skill" | "template" | "fixture";
 export type CatalogStatus = "partial" | "verified" | "adapting" | "integrated" | "documented" | "development" | "testing";
@@ -75,8 +77,25 @@ export const categoryLabels: Readonly<Record<string, string>> = {
 
 export const catalogItems = raw.items as readonly CatalogItem[];
 
-export function getCatalogItem(slug: string): CatalogItem | undefined {
-  return catalogItems.find((item) => item.slug === slug);
+const englishCopy: Record<string, Pick<CatalogItem, "title" | "summary" | "features" | "scenarios" | "statusDetail">> = english;
+
+const englishItems = catalogItems.map((item): CatalogItem => ({
+  ...item,
+  ...englishCopy[item.slug],
+  statusLabel: statusLabels.en[item.status],
+  related: item.related.map((related) => ({
+    ...related,
+    title: englishCopy[related.slug]?.title ?? related.title,
+    relation: "Related resource",
+  })),
+}));
+
+export function catalogItemsFor(locale: Locale): readonly CatalogItem[] {
+  return locale === "en" ? englishItems : catalogItems;
+}
+
+export function getCatalogItem(slug: string, locale: Locale = "zh"): CatalogItem | undefined {
+  return catalogItemsFor(locale).find((item) => item.slug === slug);
 }
 
 export function catalogPath(item: Pick<CatalogItem, "slug">): string {
@@ -92,3 +111,10 @@ export const statusTone: Readonly<Record<CatalogStatus, "ok" | "progress" | "mut
   development: "dev",
   testing: "dev",
 };
+
+
+export function categoryLabel(value: string, locale: Locale): string {
+  if (locale === "zh") return categoryLabels[value] ?? value;
+  if (value === "git") return "Git";
+  return value.charAt(0).toUpperCase() + value.slice(1).replaceAll("-", " ");
+}

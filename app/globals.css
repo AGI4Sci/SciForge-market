@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: light;
-  --ink: #192d26;
-  --muted: #4a5e53;
-  --paper: #f4f5ef;
-  --card: #fff;
-  --line: #dce3d8;
+  color-scheme: light dark;
+  --ink: light-dark(#192d26, #e5eee7);
+  --muted: light-dark(#4a5e53, #b0c3b7);
+  --paper: light-dark(#f4f5ef, #131c18);
+  --card: light-dark(#fff, #1c2822);
+  --line: light-dark(#dce3d8, #34473c);
   --pine: #183e34;
+  --accent-ink: light-dark(#183e34, #c0e5c8);
   --pine-deep: #112e27;
   --lime: #d9f6a4;
   --radius: 16px;
@@ -37,7 +38,7 @@ button, input, select { font: inherit; }
 button { cursor: pointer; }
 
 :focus-visible {
-  outline: 2px solid #377554;
+  outline: 2px solid light-dark(#377554, #a1d8b0);
   outline-offset: 4px;
 }
 
@@ -74,7 +75,6 @@ button { cursor: pointer; }
   display: flex;
   align-items: center;
   gap: 16px;
-  justify-content: space-between;
   min-height: 68px;
 }
 
@@ -98,7 +98,7 @@ button { cursor: pointer; }
   font-weight: 800;
 }
 
-.main-nav { display: flex; align-items: center; gap: 4px; }
+.main-nav { display: flex; align-items: center; gap: 4px; margin-inline-start: auto; }
 
 .main-nav a {
   display: block;
@@ -110,8 +110,8 @@ button { cursor: pointer; }
 }
 
 .main-nav a:hover, .main-nav a[aria-current="page"] {
-  background: #eaf2e8;
-  color: var(--pine);
+  background: light-dark(#eaf2e8, #304538);
+  color: var(--accent-ink);
 }
 
 .market-hero { padding-block: 40px 22px; }
@@ -120,7 +120,7 @@ button { cursor: pointer; }
 .market-hero-meta { color: var(--muted); font-size: 14px; }
 .market-hero-meta { margin: 16px 0 0; }
 .market-crumb { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
-.market-crumb a, .inline-link, .catalog-related a { color: var(--pine); text-underline-offset: 4px; }
+.market-crumb a, .inline-link, .catalog-related a { color: var(--accent-ink); text-underline-offset: 4px; }
 .market-crumb a:hover, .inline-link:hover, .catalog-related a:hover { text-decoration: underline; }
 .market-body { padding-block: 4px 64px; }
 
@@ -138,27 +138,7 @@ button { cursor: pointer; }
 .market-panel ul { margin: 0; padding-inline-start: 1.25rem; list-style: disc; color: var(--muted); }
 .market-panel li + li { margin-top: 6px; }
 
-.market-panel .market-note {
-  margin-top: 16px;
-  padding: 12px 14px;
-  border-left: 3px solid #86a889;
-  border-radius: 0 8px 8px 0;
-  background: #eff4ec;
-  font-size: 14px;
-}
-
-.market-note + p { margin-top: 16px; }
 .inline-link { font-weight: 700; }
-
-.install-boundary {
-  display: inline-block;
-  margin: 16px 0 0;
-  padding: 7px 12px;
-  border-radius: 7px;
-  background: #e5eee2;
-  color: var(--pine);
-  font-size: 14px;
-}
 
 .market-action {
   min-height: 42px;
@@ -174,8 +154,8 @@ button { cursor: pointer; }
 
 .site-footer {
   border-top: 1px solid var(--line);
-  background: #e9eee5;
-  color: var(--pine);
+  background: light-dark(#e9eee5, #202d25);
+  color: var(--accent-ink);
 }
 
 .footer-inner {
@@ -187,6 +167,7 @@ button { cursor: pointer; }
   font-weight: 650;
 }
 
+.footer-inner a { flex: none; }
 .footer-inner a:hover { text-decoration: underline; text-underline-offset: 4px; }
 
 @media (max-width: 660px) {

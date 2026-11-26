@@ -1,0 +1,403 @@
+{
+  "anchored-comments": {
+    "title": "Anchored Comments",
+    "summary": "Leave comments on specific parts of a file or interface so reviewers know exactly what each note refers to.",
+    "features": [
+      "Pin comments to a location",
+      "Keep the revision a comment refers to",
+      "Save the comment history"
+    ],
+    "scenarios": [
+      "Flag a paragraph for revision",
+      "Point out where an interface needs a change"
+    ],
+    "statusDetail": "The standalone plugin source is public."
+  },
+  "change-inspector": {
+    "title": "Change Inspector",
+    "summary": "See which files an agent changed during a session and review each diff.",
+    "features": [
+      "Open a session's change record",
+      "Inspect individual file diffs",
+      "Review the workspace in read-only mode"
+    ],
+    "scenarios": [
+      "Check whether an agent touched unexpected files",
+      "Review changes before merging"
+    ],
+    "statusDetail": "Activation was tested in an isolated environment, and session file changes were reviewed in the desktop client's development mode."
+  },
+  "scientific-plotting": {
+    "title": "Scientific Plotting",
+    "summary": "Map experimental data to a chart and keep the plotting settings so you can rerun it and compare the results.",
+    "features": [
+      "Check the plotting environment",
+      "Map data columns to a chart",
+      "Generate a figure",
+      "Rerun with the saved settings and compare results"
+    ],
+    "scenarios": [
+      "Create a reproducible figure for a paper",
+      "Compare the inputs and outputs of two runs"
+    ],
+    "statusDetail": "The SciForge Acceptance test build verified environment checks, data mapping, rendering, reruns and comparison, as well as version history and the plugin lifecycle."
+  },
+  "text-stats": {
+    "title": "Text Statistics",
+    "summary": "Count words, characters and bytes, with separate rules for Chinese and Latin-script text.",
+    "features": [
+      "Count characters, words, lines, paragraphs and bytes",
+      "Use separate counting rules for Chinese and Latin scripts",
+      "Run the calculation locally"
+    ],
+    "scenarios": [
+      "Check a manuscript's word limit",
+      "Measure the length of a set of review comments"
+    ],
+    "statusDetail": "The counting options and the rules for Chinese and English text are documented."
+  },
+  "unit-conversion": {
+    "title": "Scientific Unit Conversion",
+    "summary": "Convert between units of the same quantity, such as Celsius and Kelvin.",
+    "features": [
+      "Convert length, mass, time, volume, energy and pressure",
+      "Handle temperature scales with an offset",
+      "Flag unknown units and incompatible dimensions"
+    ],
+    "scenarios": [
+      "Express lab records in the units used in a paper",
+      "Compare values reported in different units"
+    ],
+    "statusDetail": "The supported quantities and conversion rules are documented."
+  },
+  "domain-artifact-versions": {
+    "title": "Artifact Versions",
+    "summary": "Give research outputs a stable ID, keep read-only versions, and export snapshots to another workspace.",
+    "features": [
+      "Save immutable versions",
+      "List outputs and open specific versions",
+      "Import and export snapshots"
+    ],
+    "scenarios": [
+      "Keep the exact files used in an analysis",
+      "Cite an experimental result someone else can verify"
+    ],
+    "statusDetail": "Part of the desktop client source."
+  },
+  "domain-browser-preview": {
+    "title": "Browser Preview",
+    "summary": "Open a web page beside your project so you can refer to it while you work.",
+    "features": [
+      "Open pages in the preview panel",
+      "Manage open pages",
+      "Use the panel's browsing controls"
+    ],
+    "scenarios": [
+      "Read online documentation while taking notes",
+      "Compare an online reference with workspace material"
+    ],
+    "statusDetail": "Part of the desktop client source."
+  },
+  "domain-collaboration": {
+    "title": "Collaboration",
+    "summary": "Hand research tasks to teammates or agents and follow messages and progress across devices.",
+    "features": [
+      "Connect collaboration devices",
+      "Sync session information",
+      "Keep tasks and messages"
+    ],
+    "scenarios": [
+      "Assign a research task to an agent",
+      "Check the same task on another device"
+    ],
+    "statusDetail": "Part of the desktop client source."
+  },
+  "domain-computer-use": {
+    "title": "Computer Use",
+    "summary": "Let an agent operate a designated page and keep a record of what it did.",
+    "features": [
+      "Connect to the operating environment through MCP",
+      "Limit browser actions to designated pages",
+      "Record action results"
+    ],
+    "scenarios": [
+      "Repeat steps on an approved page",
+      "Review an agent's actions in the interface"
+    ],
+    "statusDetail": "Part of the desktop client source."
+  },
+  "domain-create-loop": {
+    "title": "Create Loop",
+    "summary": "Turn repeated steps into a reusable workflow with pauses for approval where needed.",
+    "features": [
+      "Arrange steps as workflow nodes",
+      "Run a workflow and handle approvals",
+      "Save workflow templates"
+    ],
+    "scenarios": [
+      "Repeat an analysis with the same steps",
+      "Put a human review into a workflow"
+    ],
+    "statusDetail": "Part of the desktop client source."
+  },
+  "domain-evidence-dag": {
+    "title": "Evidence DAG",
+    "summary": "Connect a research conclusion to its supporting material so reviewers can follow the evidence.",
+    "features": [
+      "Add evidence as it becomes available",
+      "Save a snapshot of the evidence chain",
+      "Read the record for review"
+    ],
+    "scenarios": [
+      "Trace which materials support a conclusion",
+      "Keep the version of the evidence used in a review"
+    ],
+    "statusDetail": "Part of the desktop client source."
+  },
+  "domain-git-checkpoints": {
+    "title": "Git Checkpoints",
+    "summary": "Save Git checkpoints during a code experiment so you can return to an earlier workspace state.",
+    "features": [
+      "Create and manage Git checkpoints",
+      "Choose when to save by session turn",
+      "Restore an existing checkpoint"
+    ],
+    "scenarios": [
+      "Save the project before trying a change",
+      "Return to a known working state"
+    ],
+    "statusDetail": "Part of the desktop client source."
+  },
+  "domain-identity-access": {
+    "title": "Identity and Access",
+    "summary": "Switch local accounts on a shared computer and keep research records attributed to the right person.",
+    "features": [
+      "Choose a local account",
+      "Label record ownership",
+      "Separate local data by account"
+    ],
+    "scenarios": [
+      "Keep records separate on a shared computer",
+      "Check which account owns a research record"
+    ],
+    "statusDetail": "Part of the desktop client source."
+  },
+  "domain-project-dag": {
+    "title": "Project DAG",
+    "summary": "Map goals and dependent steps so you can follow a research project's progress.",
+    "features": [
+      "Compile a project plan into a graph",
+      "Save research goals",
+      "Check project status"
+    ],
+    "scenarios": [
+      "Plan experiments with dependent steps",
+      "Trace the evidence linked to a goal"
+    ],
+    "statusDetail": "Part of the desktop client source."
+  },
+  "domain-research-checkpoints": {
+    "title": "Research Checkpoints",
+    "summary": "Save a completed research turn as a read-only checkpoint for later review or restoration.",
+    "features": [
+      "Save checkpoints by conversation turn",
+      "List checkpoints and check their status",
+      "Import or restore a checkpoint"
+    ],
+    "scenarios": [
+      "Keep the conversation behind a research decision",
+      "Recover the record of an earlier investigation"
+    ],
+    "statusDetail": "Part of the desktop client source."
+  },
+  "domain-research-dossier": {
+    "title": "Research",
+    "summary": "Bring selected output versions and computation records into one dossier for collaborators to review.",
+    "features": [
+      "View a research dossier",
+      "Reference output versions or computation runs",
+      "Assemble a read-only record"
+    ],
+    "scenarios": [
+      "Organize the results and sources of a study",
+      "Share computation results someone else can verify"
+    ],
+    "statusDetail": "Part of the desktop client source."
+  },
+  "domain-terminal": {
+    "title": "Terminal",
+    "summary": "Open a terminal inside the workspace and use tabs to keep sessions separate.",
+    "features": [
+      "Open the bottom terminal panel",
+      "Switch between terminal tabs",
+      "Read command output"
+    ],
+    "scenarios": [
+      "Run a command from the project directory",
+      "Check build or analysis logs"
+    ],
+    "statusDetail": "Part of the desktop client source."
+  },
+  "domain-biology-workbench": {
+    "title": "Biology Workbench",
+    "summary": "Organize biological analyses by project and preview related files and analysis history in the workspace.",
+    "features": [
+      "Open analysis rooms and review history",
+      "Preview life science files",
+      "Save workspace state"
+    ],
+    "scenarios": [
+      "Review the analyses carried out for a project",
+      "Inspect files produced by an analysis"
+    ],
+    "statusDetail": "Part of the desktop client source."
+  },
+  "domain-knowledge-net": {
+    "title": "Knowledge Net",
+    "summary": "Link literature notes to their data so you can find the underlying material later.",
+    "features": [
+      "Organize literature notes",
+      "Link notes to data",
+      "Find and export records"
+    ],
+    "scenarios": [
+      "Collect material for a literature review",
+      "Trace a note back to its data"
+    ],
+    "statusDetail": "Part of the desktop client source."
+  },
+  "domain-siyuan-content-space-provider": {
+    "title": "Cloud Notes",
+    "summary": "Open cloud notes in the desktop workspace and update shared records with the SiYuan editor.",
+    "features": [
+      "Browse cloud notes",
+      "Use the SiYuan editor in the workspace"
+    ],
+    "scenarios": [
+      "Organize shared project notes",
+      "Add to a team's working notes"
+    ],
+    "statusDetail": "Part of the desktop client source."
+  },
+  "domain-user-decisions": {
+    "title": "User Decisions",
+    "summary": "Answer an agent's questions and choose what it should do next from within the workspace.",
+    "features": [
+      "Show questions and available choices",
+      "Submit choices in a movable questionnaire"
+    ],
+    "scenarios": [
+      "Choose the agent's next step",
+      "Refer to project material while answering"
+    ],
+    "statusDetail": "Part of the desktop client source."
+  },
+  "skill-openspec-apply-change": {
+    "title": "OpenSpec Apply Change",
+    "summary": "Implement a defined OpenSpec change from its task list and record what is complete.",
+    "features": [
+      "Read the existing spec",
+      "Work through the change tasks",
+      "Record progress"
+    ],
+    "scenarios": [
+      "Start an approved change",
+      "Pick up unfinished work"
+    ],
+    "statusDetail": "For OpenSpec tasks during development."
+  },
+  "skill-openspec-archive-change": {
+    "title": "OpenSpec Archive Change",
+    "summary": "Archive a completed OpenSpec change and keep its specification and implementation record.",
+    "features": [
+      "Archive completed changes",
+      "Keep records with the change"
+    ],
+    "scenarios": [
+      "Archive a change after delivery",
+      "Tidy up finished development work"
+    ],
+    "statusDetail": "For OpenSpec tasks during development."
+  },
+  "skill-openspec-explore": {
+    "title": "OpenSpec Explore",
+    "summary": "Clarify the problem, requirements and possible approaches before writing a proposal.",
+    "features": [
+      "Identify the problem",
+      "Clarify requirements",
+      "Compare approaches"
+    ],
+    "scenarios": [
+      "Define the problem before starting work",
+      "Evaluate several implementation options"
+    ],
+    "statusDetail": "For OpenSpec tasks during development."
+  },
+  "skill-openspec-propose": {
+    "title": "OpenSpec Propose",
+    "summary": "Turn an idea into a change proposal with a design, specification and task list.",
+    "features": [
+      "Draft a proposal",
+      "Write the design and spec",
+      "Break implementation into tasks"
+    ],
+    "scenarios": [
+      "Turn a research idea into an actionable plan",
+      "Explain a change before development starts"
+    ],
+    "statusDetail": "For OpenSpec tasks during development."
+  },
+  "plugin-template": {
+    "title": "Plugin Template",
+    "summary": "Start a SciForge plugin with a sample manifest, entry point and build setup.",
+    "features": [
+      "Read the sample manifest",
+      "Reuse the minimal entry point",
+      "Build with the supplied configuration"
+    ],
+    "scenarios": [
+      "Create a new plugin",
+      "Learn the minimum plugin file structure"
+    ],
+    "statusDetail": "A starting project for developing a plugin."
+  },
+  "fixtures-test-fixtures": {
+    "title": "Test Fixtures (47 Files)",
+    "summary": "Use 47 test files to reproduce parsing and processing cases.",
+    "features": [
+      "Supply synthetic input",
+      "Recreate specific test cases"
+    ],
+    "scenarios": [
+      "Check how a parser handles sample input",
+      "Reproduce a processing failure"
+    ],
+    "statusDetail": "Used by automated tests."
+  },
+  "fixtures-scripts-fixtures": {
+    "title": "Script Test Fixtures",
+    "summary": "Check script output on small samples and rerun the same inputs after a change.",
+    "features": [
+      "Supply small sample inputs",
+      "Repeat script test cases"
+    ],
+    "scenarios": [
+      "Check the output of a script on a sample",
+      "Spot regressions after editing a script"
+    ],
+    "statusDetail": "Used by automated tests."
+  },
+  "fixtures-scripts-e2e-fixtures": {
+    "title": "End-to-End Test Fixtures",
+    "summary": "Run complete flows with synthetic scenarios and check how key interactions behave.",
+    "features": [
+      "Supply end-to-end test inputs",
+      "Recreate key interactions"
+    ],
+    "scenarios": [
+      "Verify a multi-step flow",
+      "Check key interactions for regressions"
+    ],
+    "statusDetail": "Used by automated tests."
+  }
+}

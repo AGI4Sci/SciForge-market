@@ -25,7 +25,7 @@ test("homepage publishes all five groups and the full count", async () => {
     /模板[\s\S]*1/,
     /测试夹具[\s\S]*3/,
     /全部资源/,
-    /搜索名称、用途、能力或场景/,
+    /搜索名称、用途或场景/,
     /业务分类/,
     /状态/,
   ]) assert.match(html, expected);
@@ -50,26 +50,26 @@ test("plugin, builtin, skill, template and fixture examples render their own fra
   const plugin = await render("/catalog/text-stats");
   assert.match(plugin, /插件/);
   assert.match(plugin, /部分功能已验证|公开说明/);
-  assert.match(plugin, /本网站展示 SciForge 的插件与能力信息，暂不提供下载/);
+  assert.match(plugin, /中英文统计规则/);
 
   const builtin = await render("/catalog/domain-artifact-versions");
   assert.match(builtin, /内置模块/);
-  assert.match(builtin, /随软件集成/);
+  assert.match(builtin, /已集成/);
   assert.match(builtin, /核心能力/);
 
   const skill = await render("/catalog/skill-openspec-explore");
   assert.match(skill, /技能/);
   assert.match(skill, /开发资源/);
-  assert.match(skill, /不是产品运行时能力/);
+  assert.match(skill, /用于开发期间的 OpenSpec 工作/);
 
   const template = await render("/catalog/plugin-template");
   assert.match(template, /模板/);
-  assert.match(template, /开发起点/);
+  assert.match(template, /用于建立新插件/);
 
   const fixture = await render("/catalog/fixtures-test-fixtures");
   assert.match(fixture, /测试夹具/);
   assert.match(fixture, /测试资源/);
-  assert.match(fixture, /不供普通用户安装/);
+  assert.match(fixture, /供自动化测试使用/);
 });
 
 test("legacy plugin address guides to the new catalog detail without install data", async () => {
@@ -82,8 +82,8 @@ test("legacy plugin address guides to the new catalog detail without install dat
 test("help page describes the catalog and contains no install promise", async () => {
   const html = await render("/install");
   assert.match(html, /目录说明/);
-  assert.match(html, /暂不提供下载/);
-  assert.match(html, /29/);
+  assert.match(html, /资源类型定义/);
+  assert.match(html, /适配状态说明/);
   assert.match(html, /测试夹具/);
   assert.doesNotMatch(html, /打开扩展中心/);
   assert.doesNotMatch(html, /确认权限/);
@@ -100,7 +100,8 @@ test("custom 404 and share metadata remain present", async () => {
 });
 
 test("no internal paths, hashes, artifacts or source maps are published", async () => {
-  const routes = ["/", "/install", ...payload.items.map((item) => `/catalog/${item.slug}`)];
+  const pages = ["/", "/install", ...payload.items.map((item) => `/catalog/${item.slug}`)];
+  const routes = [...pages, ...pages.map((path) => path === "/" ? "/en" : `/en${path}`)];
   for (const route of routes) {
     const html = await render(route);
     assert.doesNotMatch(html, /\/Users\//, route);
@@ -112,4 +113,22 @@ test("no internal paths, hashes, artifacts or source maps are published", async 
   assert.equal(entries.filter((entry) => entry.endsWith(".sciforge-dsh-plugin")).length, 0);
   assert.equal(entries.filter((entry) => entry.endsWith(".map")).length, 0);
   assert.equal(entries.filter((entry) => entry.endsWith(".sciforge-plugin")).length, 0);
+});
+
+test("both languages publish every resource and keep the scope note in the footer", async () => {
+  const english = JSON.parse(await readFile(new URL("../lib/catalog-public.en.json", import.meta.url), "utf8"));
+  assert.deepEqual(Object.keys(english).sort(), payload.items.map(item => item.slug).sort());
+  const pages = [["/", "Plugins and capabilities"], ["/install", "Resource types"],
+    ...payload.items.map(item => [`/catalog/${item.slug}`, english[item.slug].summary])];
+
+  for (const [route, translation] of pages) {
+    const zh = await render(route);
+    const en = await render(route === "/" ? "/en" : `/en${route}`);
+    assert.match(zh, /<html[^>]*lang="zh-CN"/);
+    assert.match(en, /<html[^>]*lang="en"/);
+    assert.match(zh, /<footer[^>]*>[\s\S]*公开能力目录 · 仅展示组件元数据与适配状态/);
+    assert.doesNotMatch(zh, /暂不提供下载|不提供下载|怎么看目录|受治理的|界面目标|候选制品|不是正式发行版/);
+    assert.match(en, /Component metadata and integration status/);
+    assert.ok(en.includes(translation.replaceAll("'", "&#x27;")), route);
+  }
 });

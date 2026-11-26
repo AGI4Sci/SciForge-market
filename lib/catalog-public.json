@@ -23,23 +23,23 @@
       "slug": "anchored-comments",
       "kind": "plugin",
       "title": "Anchored Comments",
-      "summary": "把评论锚定到文件或界面目标，保留修订和产品反馈上下文。",
+      "summary": "在文件或界面的指定位置加批注，让合作者看得出每条意见指向哪里。",
       "categories": [
         "collaboration",
         "review"
       ],
       "features": [
-        "目标锚定评论",
-        "修订上下文",
-        "评论持久化"
+        "在指定位置加批注",
+        "保留批注对应的修订",
+        "保存评论记录"
       ],
       "scenarios": [
-        "对文档局部留下可追踪意见",
-        "把产品反馈绑定到具体界面目标"
+        "标记文档中需要修改的一段",
+        "指出界面上需要调整的位置"
       ],
       "status": "documented",
       "statusLabel": "公开说明",
-      "statusDetail": "独立扩展已提供公开源码。本目录展示功能说明，正式发行版中的安装可用性由桌面扩展中心显示。",
+      "statusDetail": "独立插件源码已公开。",
       "related": []
     },
     {
@@ -47,23 +47,23 @@
       "slug": "change-inspector",
       "kind": "plugin",
       "title": "变更检查器",
-      "summary": "以只读方式查看一次会话产生的文件变更与差异，便于检查和审计。",
+      "summary": "查看 Agent 在一次会话中改过哪些文件，并逐个核对改动。",
       "categories": [
         "workspace",
         "inspection"
       ],
       "features": [
-        "打开会话变更快照",
-        "查看文件级差异",
-        "不修改工作区"
+        "打开会话的变更记录",
+        "查看每个文件的差异",
+        "以只读方式审阅工作区"
       ],
       "scenarios": [
-        "审阅 Agent 在会话中改了哪些文件",
-        "在合并前快速检查变更范围"
+        "检查 Agent 是否改到了计划之外的文件",
+        "合并前复核改动"
       ],
       "status": "adapting",
       "statusLabel": "适配中",
-      "statusDetail": "独立扩展已提供公开源码，支持查看会话变更快照和文件差异。已有隔离激活记录。",
+      "statusDetail": "已在隔离环境中验证插件激活，并通过桌面客户端的开发模式检查会话文件改动。",
       "related": []
     },
     {
@@ -71,24 +71,24 @@
       "slug": "scientific-plotting",
       "kind": "plugin",
       "title": "Scientific Plotting",
-      "summary": "受治理的科研绘图：状态、数据映射、出图、重跑与比对。",
+      "summary": "把实验数据映射到图表，保留绘图参数，方便重跑和比较结果。",
       "categories": [
         "science",
         "plotting"
       ],
       "features": [
         "检查绘图环境",
-        "映射数据",
-        "渲染科研图",
-        "重跑并比对结果"
+        "指定数据列与图表的对应关系",
+        "生成科研图",
+        "用原参数重跑并比对"
       ],
       "scenarios": [
-        "把实验数据做成可复现的论文图",
-        "比较两次绘图输入和输出"
+        "为论文生成可重跑的图",
+        "比较两次绘图的输入和结果"
       ],
       "status": "verified",
       "statusLabel": "测试构建已验证",
-      "statusDetail": "在 SciForge Acceptance 测试构建中完成 status、map-data、render、rerun、compare、版本记录和生命周期验证；这是测试构建结果，不是正式发行版。",
+      "statusDetail": "已在 SciForge Acceptance 测试构建中验证环境检查、数据映射、出图、重跑和比对，也检查了版本记录及插件生命周期。",
       "related": []
     },
     {
@@ -96,23 +96,23 @@
       "slug": "text-stats",
       "kind": "plugin",
       "title": "文本统计",
-      "summary": "统计文本的字符、中文/拉丁词、行、段落与字节数，并明确说明中英文统计口径。",
+      "summary": "统计字数、行数和字节数，投稿前可按中文或拉丁文字的规则核对。",
       "categories": [
         "text",
         "utility"
       ],
       "features": [
-        "统计字符与词数",
-        "按中英文口径解释结果",
-        "纯本地计算"
+        "统计字符、词、行、段落和字节",
+        "区分中文和拉丁文字的计数规则",
+        "在本地完成计算"
       ],
       "scenarios": [
-        "投稿前核对字数口径",
-        "统计长文本或审稿意见规模"
+        "核对稿件字数是否符合要求",
+        "估算长篇审稿意见的篇幅"
       ],
       "status": "documented",
       "statusLabel": "公开说明",
-      "statusDetail": "公开目录中的能力说明；站点不提供插件包下载。",
+      "statusDetail": "已公开计数项目和中英文统计规则。",
       "related": []
     },
     {
@@ -120,23 +120,23 @@
       "slug": "unit-conversion",
       "kind": "plugin",
       "title": "科学单位换算",
-      "summary": "常用科研单位的确定性换算，支持长度、质量、时间、体积、能量、压力和温度。",
+      "summary": "在同一物理量的单位之间换算，比如把摄氏度换成开尔文。",
       "categories": [
         "science",
         "utility"
       ],
       "features": [
-        "同维度单位换算",
-        "拒绝跨维度或未知单位",
-        "处理仿射温标"
+        "换算长度、质量、时间、体积、能量和压力",
+        "换算需要加减偏移量的温标",
+        "识别未知单位和不同量纲"
       ],
       "scenarios": [
-        "把实验记录统一到论文单位",
-        "跨文献比较数值前做维度检查"
+        "把实验记录换算成论文采用的单位",
+        "比较使用不同单位的文献数据"
       ],
       "status": "documented",
       "statusLabel": "公开说明",
-      "statusDetail": "公开目录中的能力说明；站点不提供插件包下载。",
+      "statusDetail": "已公开支持的物理量与换算规则。",
       "related": []
     },
     {
@@ -144,23 +144,23 @@
       "slug": "domain-artifact-versions",
       "kind": "builtin",
       "title": "Artifact Versions",
-      "summary": "为工作区科研制品提供稳定标识、不可变版本和可移植快照。",
+      "summary": "给科研产物分配固定 ID，保留只读的历史版本，并将快照导出到其他工作区。",
       "categories": [
         "research",
         "artifacts"
       ],
       "features": [
-        "不可变内容版本",
-        "制品读取与列举",
-        "快照包导入导出"
+        "保存不可改写的产物版本",
+        "查看产物和版本清单",
+        "导入或导出快照"
       ],
       "scenarios": [
-        "保存实验产物的精确版本",
-        "为研究结论引用可复核制品"
+        "留存分析时使用的文件版本",
+        "引用同事可以复核的实验结果"
       ],
       "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "statusLabel": "已集成",
+      "statusDetail": "已并入桌面客户端源码。",
       "related": []
     },
     {
@@ -168,23 +168,23 @@
       "slug": "domain-browser-preview",
       "kind": "builtin",
       "title": "Browser Preview",
-      "summary": "在受治理的浏览器预览面板中打开网页并管理页面资源。",
+      "summary": "在工作区里打开网页，一边看资料，一边保留手头的项目。",
       "categories": [
         "browser",
         "preview"
       ],
       "features": [
-        "网页预览面板",
-        "受治理页面资源",
-        "浏览器控制"
+        "在预览面板打开网页",
+        "管理打开的页面",
+        "使用面板提供的浏览器操作"
       ],
       "scenarios": [
-        "在应用内查看文档或网页",
-        "对照网页资料做研究"
+        "边读网页文档边做项目笔记",
+        "把在线资料与工作区内容对照"
       ],
       "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "statusLabel": "已集成",
+      "statusDetail": "已并入桌面客户端源码。",
       "related": []
     },
     {
@@ -192,22 +192,22 @@
       "slug": "domain-collaboration",
       "kind": "builtin",
       "title": "Collaboration",
-      "summary": "连接用户、手机与 Agent 的协作投影、消息和任务流转。",
+      "summary": "把研究任务交给同事或 Agent，在不同设备上继续看消息和进度。",
       "categories": [
         "collaboration"
       ],
       "features": [
-        "设备连接",
-        "会话投影",
-        "持久消息与任务"
+        "连接协作设备",
+        "同步会话信息",
+        "保存任务和消息"
       ],
       "scenarios": [
-        "把研究任务分派给 Agent",
-        "在设备之间同步会话状态"
+        "把研究任务交给 Agent",
+        "在另一台设备查看同一项任务"
       ],
       "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "statusLabel": "已集成",
+      "statusDetail": "已并入桌面客户端源码。",
       "related": []
     },
     {
@@ -215,23 +215,23 @@
       "slug": "domain-computer-use",
       "kind": "builtin",
       "title": "Computer Use",
-      "summary": "通过受管 MCP 和受目标限制的 CDP 执行计算机操作。",
+      "summary": "让 Agent 在指定页面操作，并留下操作结果供复查。",
       "categories": [
         "automation",
         "computer-use"
       ],
       "features": [
-        "受管 MCP 连接",
-        "目标限定的浏览器操作",
-        "操作回执"
+        "通过 MCP 连接操作环境",
+        "将浏览器操作限制在指定页面",
+        "记录操作结果"
       ],
       "scenarios": [
-        "让 Agent 操作受控桌面环境",
-        "完成可审计的界面自动化"
+        "在获准的页面执行重复操作",
+        "复核 Agent 在界面中做过的事"
       ],
       "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "statusLabel": "已集成",
+      "statusDetail": "已并入桌面客户端源码。",
       "related": []
     },
     {
@@ -239,23 +239,23 @@
       "slug": "domain-create-loop",
       "kind": "builtin",
       "title": "Create Loop",
-      "summary": "以节点和工作流组织可复用自动化流程。",
+      "summary": "把重复的步骤串成可复用流程，在需要确认的地方停下来审批。",
       "categories": [
         "automation",
         "workflow"
       ],
       "features": [
-        "工作流节点",
-        "运行与审批",
-        "可复用模板"
+        "用节点组织步骤",
+        "运行流程并处理审批",
+        "保存流程模板"
       ],
       "scenarios": [
-        "把重复研究步骤串成流程",
-        "对多步骤任务做审批和记录"
+        "让多次分析按同样的步骤执行",
+        "在流程中安排人工审核"
       ],
       "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "statusLabel": "已集成",
+      "statusDetail": "已并入桌面客户端源码。",
       "related": []
     },
     {
@@ -263,23 +263,23 @@
       "slug": "domain-evidence-dag",
       "kind": "builtin",
       "title": "Evidence DAG",
-      "summary": "证据图谱、增量、闭包与不可变快照的领域模块。",
+      "summary": "把研究结论和支持它的材料连起来，复核时可以顺着记录找到依据。",
       "categories": [
         "research",
         "evidence"
       ],
       "features": [
-        "证据增量",
-        "闭包与快照",
-        "审计读取"
+        "逐步补充证据",
+        "保存完整证据链的快照",
+        "读取记录供复核"
       ],
       "scenarios": [
-        "维护研究证据链",
-        "复核结论依据"
+        "追查一项结论引用了哪些材料",
+        "保留评审时看到的证据版本"
       ],
       "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "statusLabel": "已集成",
+      "statusDetail": "已并入桌面客户端源码。",
       "related": []
     },
     {
@@ -287,23 +287,23 @@
       "slug": "domain-git-checkpoints",
       "kind": "builtin",
       "title": "Git Checkpoints",
-      "summary": "Git 检查点、轮次策略和恢复的领域模块。",
+      "summary": "为代码实验留下 Git 检查点，需要时回到当时的工作状态。",
       "categories": [
         "git",
         "checkpoints"
       ],
       "features": [
-        "检查点生命周期",
-        "轮次边界策略",
-        "恢复与救援"
+        "创建和管理 Git 检查点",
+        "按会话轮次决定何时保存",
+        "从已有检查点恢复"
       ],
       "scenarios": [
-        "保存代码实验状态",
-        "回到已知版本"
+        "在试改代码前保存项目状态",
+        "回到一次已知可用的修改"
       ],
       "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "statusLabel": "已集成",
+      "statusDetail": "已并入桌面客户端源码。",
       "related": []
     },
     {
@@ -311,23 +311,23 @@
       "slug": "domain-identity-access",
       "kind": "builtin",
       "title": "Identity and Access",
-      "summary": "本地账户选择与归属标识；不等同于安全认证。",
+      "summary": "在同一台电脑上切换本地账户，分清研究记录归谁。",
       "categories": [
         "identity",
         "local"
       ],
       "features": [
-        "本地账户选择",
-        "归属标识",
-        "本地数据范围"
+        "选择本地账户",
+        "为记录标注归属",
+        "按账户划分本地数据"
       ],
       "scenarios": [
-        "区分本机不同使用者",
-        "给研究记录标注归属"
+        "多人共用一台电脑时区分记录",
+        "核对某条研究记录归属哪个账户"
       ],
       "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "statusLabel": "已集成",
+      "statusDetail": "已并入桌面客户端源码。",
       "related": []
     },
     {
@@ -335,23 +335,23 @@
       "slug": "domain-project-dag",
       "kind": "builtin",
       "title": "Project DAG",
-      "summary": "项目图编译、目标保存和持久化状态。",
+      "summary": "把项目目标和相互依赖的步骤画在一张图上，方便追踪研究进度。",
       "categories": [
         "research",
         "project"
       ],
       "features": [
-        "项目图编译",
-        "目标保存",
-        "状态读取"
+        "把项目计划整理成图",
+        "保存研究目标",
+        "查看项目状态"
       ],
       "scenarios": [
-        "组织多阶段研究项目",
-        "追踪项目目标和证据"
+        "规划相互依赖的实验步骤",
+        "追踪一个目标关联的证据"
       ],
       "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "statusLabel": "已集成",
+      "statusDetail": "已并入桌面客户端源码。",
       "related": []
     },
     {
@@ -359,23 +359,23 @@
       "slug": "domain-research-checkpoints",
       "kind": "builtin",
       "title": "Research Checkpoints",
-      "summary": "将完成的对话轮次转换为不可变研究检查点。",
+      "summary": "把已完成的一轮研究对话存成只读检查点，之后可以查阅或恢复。",
       "categories": [
         "research",
         "checkpoints"
       ],
       "features": [
-        "轮次级检查点",
-        "清单与状态",
-        "恢复与导入"
+        "按对话轮次保存检查点",
+        "查看检查点清单和状态",
+        "导入或恢复检查点"
       ],
       "scenarios": [
-        "保留研究对话的可审计版本",
-        "复现一次研究过程"
+        "留存形成研究判断时的对话",
+        "恢复某一次研究的记录"
       ],
       "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "statusLabel": "已集成",
+      "statusDetail": "已并入桌面客户端源码。",
       "related": []
     },
     {
@@ -383,23 +383,23 @@
       "slug": "domain-research-dossier",
       "kind": "builtin",
       "title": "Research",
-      "summary": "把指定制品版本或计算运行组装成研究档案展示。",
+      "summary": "把选定的产物版本和计算记录放进同一份研究档案，方便合作者复核。",
       "categories": [
         "research",
         "presentation"
       ],
       "features": [
-        "研究档案展示",
-        "制品或运行引用",
-        "只读组合"
+        "查看研究档案",
+        "引用指定产物版本或计算运行",
+        "以只读方式汇总记录"
       ],
       "scenarios": [
-        "整理项目研究档案",
-        "向合作者展示证据化结果"
+        "整理一项研究的结果和依据",
+        "向合作者展示可复核的计算结果"
       ],
       "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "statusLabel": "已集成",
+      "statusDetail": "已并入桌面客户端源码。",
       "related": []
     },
     {
@@ -407,23 +407,23 @@
       "slug": "domain-terminal",
       "kind": "builtin",
       "title": "Terminal",
-      "summary": "终端底部面板、标签和会话控制。",
+      "summary": "在工作区打开终端，用标签分开不同命令会话。",
       "categories": [
         "workspace",
         "terminal"
       ],
       "features": [
-        "终端面板",
-        "标签会话",
-        "命令输入输出"
+        "在底部面板打开终端",
+        "切换终端标签",
+        "查看命令输出"
       ],
       "scenarios": [
-        "在项目工作区运行命令",
-        "查看构建或分析日志"
+        "在项目目录运行命令",
+        "检查构建或分析日志"
       ],
       "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "statusLabel": "已集成",
+      "statusDetail": "已并入桌面客户端源码。",
       "related": []
     },
     {
@@ -431,23 +431,23 @@
       "slug": "domain-biology-workbench",
       "kind": "builtin",
       "title": "Biology Workbench",
-      "summary": "在工作区内组织生物分析和生命科学文件预览。",
+      "summary": "按项目整理生物分析，在工作区直接预览相关文件和分析历史。",
       "categories": [
         "life-science",
         "workspace"
       ],
       "features": [
-        "房间与分析历史",
-        "生命科学文件预览",
-        "工作区状态持久化"
+        "查看分析房间和历史",
+        "预览生命科学文件",
+        "保存工作区状态"
       ],
       "scenarios": [
-        "按项目整理分析过程",
-        "在工作区中查看分析文件"
+        "回顾某个项目的分析过程",
+        "浏览分析生成的文件"
       ],
       "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "statusLabel": "已集成",
+      "statusDetail": "已并入桌面客户端源码。",
       "related": []
     },
     {
@@ -455,23 +455,23 @@
       "slug": "domain-knowledge-net",
       "kind": "builtin",
       "title": "Knowledge Net",
-      "summary": "围绕文献笔记和数据资源建立可检索的知识网络。",
+      "summary": "把文献笔记和相关数据连起来，之后可以按笔记找回原始资料。",
       "categories": [
         "research",
         "workspace"
       ],
       "features": [
-        "组织文献笔记",
-        "关联数据资源",
-        "检索与导出"
+        "整理文献笔记",
+        "关联笔记和数据",
+        "检索并导出记录"
       ],
       "scenarios": [
-        "整理文献综述材料",
-        "复查笔记对应的数据来源"
+        "整理综述材料",
+        "追查一条笔记引用的数据"
       ],
       "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "statusLabel": "已集成",
+      "statusDetail": "已并入桌面客户端源码。",
       "related": []
     },
     {
@@ -479,22 +479,22 @@
       "slug": "domain-siyuan-content-space-provider",
       "kind": "builtin",
       "title": "云笔记",
-      "summary": "在桌面工作区用嵌入式思源编辑器查看和编辑云笔记。",
+      "summary": "在桌面工作区打开云笔记，用思源编辑器更新共享记录。",
       "categories": [
         "collaboration",
         "workspace"
       ],
       "features": [
         "浏览云笔记",
-        "在嵌入式编辑器中查看和编辑文档"
+        "在工作区内使用思源编辑器"
       ],
       "scenarios": [
-        "在项目工作区整理共享笔记",
-        "在笔记中补充协作记录"
+        "整理项目共享笔记",
+        "补写团队协作记录"
       ],
       "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "statusLabel": "已集成",
+      "statusDetail": "已并入桌面客户端源码。",
       "related": []
     },
     {
@@ -502,22 +502,22 @@
       "slug": "domain-user-decisions",
       "kind": "builtin",
       "title": "用户决策",
-      "summary": "在 Agent 工作中收集结构化决策并继续当前工作。",
+      "summary": "Agent 需要你做决定时，会把问题和选项放在工作区里。",
       "categories": [
         "interaction",
         "workflow"
       ],
       "features": [
-        "显示结构化问题",
-        "在可移动问卷中提交选择"
+        "显示待回答的问题和选项",
+        "在可移动的问卷中提交选择"
       ],
       "scenarios": [
-        "为 Agent 选择后续方案",
-        "在填写问卷时查看工作区上下文"
+        "为 Agent 选定下一步方案",
+        "边看项目资料边回答问题"
       ],
       "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "statusLabel": "已集成",
+      "statusDetail": "已并入桌面客户端源码。",
       "related": []
     },
     {
@@ -525,22 +525,22 @@
       "slug": "skill-openspec-apply-change",
       "kind": "skill",
       "title": "OpenSpec 实现变更",
-      "summary": "按 OpenSpec 变更规范实施任务，适合开始或继续实现一个已定义变更。",
+      "summary": "按 OpenSpec 的任务清单落实已定义的变更，并记录做到了哪一步。",
       "categories": [
         "development"
       ],
       "features": [
-        "按任务清单实施",
-        "读取既有规格",
-        "记录实现结果"
+        "读取现有规格",
+        "按任务落实变更",
+        "记录完成情况"
       ],
       "scenarios": [
-        "开始实现一个已批准的变更",
-        "继续未完成的 OpenSpec 任务"
+        "开始实现已批准的变更",
+        "接着处理上次未做完的任务"
       ],
       "status": "development",
       "statusLabel": "开发资源",
-      "statusDetail": "开发流程辅助，不是产品运行时能力。",
+      "statusDetail": "用于开发期间的 OpenSpec 工作。",
       "related": []
     },
     {
@@ -548,22 +548,21 @@
       "slug": "skill-openspec-archive-change",
       "kind": "skill",
       "title": "OpenSpec 归档变更",
-      "summary": "在实现完成后归档变更，收尾实验工作流。",
+      "summary": "把完成的 OpenSpec 变更移入归档，保留规格和实施记录。",
       "categories": [
         "development"
       ],
       "features": [
-        "归档已完成变更",
-        "整理变更记录",
-        "保持工作流收尾"
+        "归档已完成的变更",
+        "整理变更对应的记录"
       ],
       "scenarios": [
-        "完成实现后归档",
-        "清理已结束的变更"
+        "交付后归档变更",
+        "整理已经结束的开发事项"
       ],
       "status": "development",
       "statusLabel": "开发资源",
-      "statusDetail": "开发流程辅助，不是产品运行时能力。",
+      "statusDetail": "用于开发期间的 OpenSpec 工作。",
       "related": []
     },
     {
@@ -571,22 +570,22 @@
       "slug": "skill-openspec-explore",
       "kind": "skill",
       "title": "OpenSpec 探索",
-      "summary": "先探索问题、澄清需求，再决定方案。",
+      "summary": "在写方案前，把问题、需求和可选做法弄清楚。",
       "categories": [
         "development"
       ],
       "features": [
-        "问题探索",
-        "需求澄清",
-        "方案比较"
+        "梳理问题",
+        "澄清需求",
+        "比较可选方案"
       ],
       "scenarios": [
-        "在动手前梳理需求",
-        "评估多种实现方向"
+        "动手前明确要解决什么",
+        "评估几种实现方式"
       ],
       "status": "development",
       "statusLabel": "开发资源",
-      "statusDetail": "开发流程辅助，不是产品运行时能力。",
+      "statusDetail": "用于开发期间的 OpenSpec 工作。",
       "related": []
     },
     {
@@ -594,22 +593,22 @@
       "slug": "skill-openspec-propose",
       "kind": "skill",
       "title": "OpenSpec 提案",
-      "summary": "把想法整理成含设计、规格和任务的完整变更提案。",
+      "summary": "把一个想法写成变更提案，说明设计、规格和要做的任务。",
       "categories": [
         "development"
       ],
       "features": [
-        "生成变更提案",
-        "补齐设计与规格",
-        "拆分实施任务"
+        "起草变更提案",
+        "写明设计与规格",
+        "把实施拆成具体任务"
       ],
       "scenarios": [
-        "把研究想法变成可执行方案",
-        "在开发前形成完整提案"
+        "把研究想法变成可以执行的方案",
+        "在开发前把变更讲清楚"
       ],
       "status": "development",
       "statusLabel": "开发资源",
-      "statusDetail": "开发流程辅助，不是产品运行时能力。",
+      "statusDetail": "用于开发期间的 OpenSpec 工作。",
       "related": []
     },
     {
@@ -617,22 +616,22 @@
       "slug": "plugin-template",
       "kind": "template",
       "title": "插件模板",
-      "summary": "新插件的脚手架，提供 manifest、入口和构建结构，不是现成插件。",
+      "summary": "从现成的清单、入口和构建配置开始写 SciForge 插件。",
       "categories": [
         "development"
       ],
       "features": [
-        "manifest 结构",
-        "插件入口",
-        "构建起点"
+        "查看插件清单示例",
+        "沿用最小插件入口",
+        "用预置配置构建"
       ],
       "scenarios": [
-        "创建新的 SciForge 插件",
-        "对照最小结构学习扩展方式"
+        "创建一个新插件",
+        "学习插件必须具备的文件结构"
       ],
       "status": "development",
       "statusLabel": "开发资源",
-      "statusDetail": "开发起点，不是可安装功能。",
+      "statusDetail": "用于建立新插件的开发项目。",
       "related": []
     },
     {
@@ -640,22 +639,21 @@
       "slug": "fixtures-test-fixtures",
       "kind": "fixture",
       "title": "测试夹具（47 个文件）",
-      "summary": "用于验证测试行为的一组合成测试资源，不供普通用户安装。",
+      "summary": "用 47 个测试文件复现解析、处理等场景。",
       "categories": [
         "testing"
       ],
       "features": [
-        "验证测试行为",
-        "覆盖合成输入",
-        "不代表产品功能"
+        "提供合成输入",
+        "复现指定测试场景"
       ],
       "scenarios": [
-        "验证解析或处理行为",
-        "复现测试场景"
+        "检查解析器处理样例的方式",
+        "复现一次处理失败"
       ],
       "status": "testing",
       "statusLabel": "测试资源",
-      "statusDetail": "测试资源，不是插件，也不对外提供。",
+      "statusDetail": "供自动化测试使用。",
       "related": []
     },
     {
@@ -663,22 +661,21 @@
       "slug": "fixtures-scripts-fixtures",
       "kind": "fixture",
       "title": "脚本测试夹具",
-      "summary": "脚本测试使用的小型合成夹具，不供普通用户安装。",
+      "summary": "用小型样例核对脚本输出，改动后可以用同样的输入重跑。",
       "categories": [
         "testing"
       ],
       "features": [
-        "脚本测试输入",
-        "小型合成样例",
-        "不代表产品功能"
+        "提供简短的脚本输入样例",
+        "重复运行脚本用例"
       ],
       "scenarios": [
-        "验证脚本行为",
-        "回归脚本用例"
+        "核对脚本处理样例的结果",
+        "检查脚本改动是否引入回归"
       ],
       "status": "testing",
       "statusLabel": "测试资源",
-      "statusDetail": "测试资源，不是插件，也不对外提供。",
+      "statusDetail": "供自动化测试使用。",
       "related": []
     },
     {
@@ -686,22 +683,21 @@
       "slug": "fixtures-scripts-e2e-fixtures",
       "kind": "fixture",
       "title": "端到端测试夹具",
-      "summary": "端到端测试使用的合成夹具，不供普通用户安装。",
+      "summary": "用合成场景跑完整流程，复现关键交互并检查结果。",
       "categories": [
         "testing"
       ],
       "features": [
-        "E2E 测试输入",
-        "合成场景",
-        "不代表产品功能"
+        "提供端到端测试输入",
+        "复现关键交互场景"
       ],
       "scenarios": [
-        "验证端到端流程",
-        "回归关键交互"
+        "验证多步骤流程",
+        "检查关键交互是否回归"
       ],
       "status": "testing",
       "statusLabel": "测试资源",
-      "statusDetail": "测试资源，不是插件，也不对外提供。",
+      "statusDetail": "供自动化测试使用。",
       "related": []
     }
   ]

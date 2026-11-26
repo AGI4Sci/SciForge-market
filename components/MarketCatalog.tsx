@@ -1,9 +1,10 @@
 "use client";
 
 import { sitePath } from "@/lib/site-path";
+import { siteCopy, kindLabels, type Locale } from "@/lib/locale";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
-  categoryLabels,
+  categoryLabel,
   catalogSnapshot,
   statusTone,
   type CatalogCounts,
@@ -21,11 +22,9 @@ import {
 
 const INITIAL_STATE: CatalogFilterState = EMPTY_FILTER;
 
-function labelForCategory(value: string): string {
-  return categoryLabels[value] ?? value;
-}
-
-export function CatalogDirectory({ items }: { items: readonly CatalogItem[] }) {
+export function CatalogDirectory({ items, locale }: { items: readonly CatalogItem[]; locale: Locale }) {
+  const copy = siteCopy[locale];
+  const labels = kindLabels[locale];
   const allowed = useMemo(() => ({
     kinds: uniqueValues(items.map((item) => item.kind)),
     categories: uniqueValues(items.flatMap((item) => item.categories)).sort(),
@@ -51,7 +50,7 @@ export function CatalogDirectory({ items }: { items: readonly CatalogItem[] }) {
 
   const visible = useMemo(() => filterCatalog(items, state), [items, state]);
   const kindCounts = catalogSnapshot.counts as CatalogCounts;
-  const activeLabel = state.kind === "all" ? null : catalogSnapshot.kindLabels[state.kind as keyof CatalogCounts];
+  const activeLabel = state.kind === "all" ? null : labels[state.kind as keyof CatalogCounts];
   const statusLabel = state.status === "all"
     ? null
     : (items.find((item) => item.status === state.status)?.statusLabel ?? state.status);
@@ -65,10 +64,10 @@ export function CatalogDirectory({ items }: { items: readonly CatalogItem[] }) {
 
   return (
     <div className="market-catalog">
-      <section className="catalog-controls" aria-label="目录筛选">
+      <section className="catalog-controls" aria-label={copy.controls}>
         <div className="market-search">
           <label className="visually-hidden" htmlFor="market-search-input">
-            搜索名称、用途、能力或场景
+            {copy.search}
           </label>
           <span className="search-icon" aria-hidden="true" />
           <input
@@ -78,19 +77,19 @@ export function CatalogDirectory({ items }: { items: readonly CatalogItem[] }) {
             maxLength={120}
             value={state.query}
             onChange={(event) => commit({ ...state, query: event.target.value }, "replace")}
-            placeholder="搜索名称、用途、能力或场景…"
+            placeholder={copy.search}
           />
           {state.query ? (
             <button type="button" className="market-search-clear" onClick={() => {
               commit({ ...state, query: "" }, "replace");
               searchInput.current?.focus();
             }}>
-              清除
+              {copy.clear}
             </button>
           ) : null}
         </div>
 
-        <div className="market-chips" role="group" aria-label="按资源类型筛选">
+        <div className="market-chips" role="group" aria-label={copy.kindFilter}>
           {["all", ...allowed.kinds].map((kind) => (
             <button
               key={kind}
@@ -99,7 +98,7 @@ export function CatalogDirectory({ items }: { items: readonly CatalogItem[] }) {
               aria-pressed={state.kind === kind}
               onClick={() => commit({ ...state, kind }, "push")}
             >
-              {kind === "all" ? "全部资源" : catalogSnapshot.kindLabels[kind as keyof CatalogCounts]}{" "}
+              {kind === "all" ? copy.directory : labels[kind as keyof CatalogCounts]}{" "}
               <span>{kind === "all" ? catalogSnapshot.total : kindCounts[kind as keyof CatalogCounts]}</span>
             </button>
           ))}
@@ -107,26 +106,26 @@ export function CatalogDirectory({ items }: { items: readonly CatalogItem[] }) {
 
         <div className="catalog-selects">
           <div className="catalog-select">
-            <label htmlFor="catalog-category">业务分类</label>
+            <label htmlFor="catalog-category">{copy.category}</label>
             <select
               id="catalog-category"
               value={state.category}
               onChange={(event) => commit({ ...state, category: event.target.value }, "push")}
             >
-              <option value="all">全部分类</option>
+              <option value="all">{copy.anyCategory}</option>
               {allowed.categories.map((category) => (
-                <option key={category} value={category}>{labelForCategory(category)}</option>
+                <option key={category} value={category}>{categoryLabel(category, locale)}</option>
               ))}
             </select>
           </div>
           <div className="catalog-select">
-            <label htmlFor="catalog-status">状态</label>
+            <label htmlFor="catalog-status">{copy.status}</label>
             <select
               id="catalog-status"
               value={state.status}
               onChange={(event) => commit({ ...state, status: event.target.value }, "push")}
             >
-              <option value="all">全部状态</option>
+              <option value="all">{copy.anyStatus}</option>
               {allowed.statuses.map((status) => (
                 <option key={status} value={status}>
                   {items.find((item) => item.status === status)?.statusLabel ?? status}
@@ -139,22 +138,22 @@ export function CatalogDirectory({ items }: { items: readonly CatalogItem[] }) {
 
       <div className="catalog-results">
         <p className="market-count" aria-live="polite">
-          <strong>{visible.length} 项结果</strong>
+          <strong>{copy.result(visible.length)}</strong>
           {resultContext ? <span>{resultContext}</span> : null}
         </p>
         {filtered && visible.length > 0 ? (
           <button type="button" className="catalog-reset" onClick={reset}>
-            重置筛选
+            {copy.reset}
           </button>
         ) : null}
       </div>
 
       {visible.length === 0 ? (
         <div className="market-empty">
-          <h2>没有匹配的资源</h2>
-          <p>试试更短的关键词，或清除筛选重新浏览。</p>
+          <h2>{copy.empty}</h2>
+          <p>{copy.emptyHint}</p>
           <button type="button" className="market-action" onClick={reset}>
-            重置筛选
+            {copy.reset}
           </button>
         </div>
       ) : (
@@ -162,15 +161,15 @@ export function CatalogDirectory({ items }: { items: readonly CatalogItem[] }) {
           {visible.map((item) => (
             <li className="market-card" key={item.slug} data-kind={item.kind}>
               <div className="market-card-top">
-                <span className={`catalog-kind kind-${item.kind}`}>{catalogSnapshot.kindLabels[item.kind]}</span>
+                <span className={`catalog-kind kind-${item.kind}`}>{labels[item.kind]}</span>
                 <span className={`catalog-status status-${statusTone[item.status]}`}>{item.statusLabel}</span>
               </div>
-              <h2><a href={sitePath(`/catalog/${item.slug}`)}>{item.title}</a></h2>
+              <h2><a href={sitePath(`/catalog/${item.slug}`, locale)}>{item.title}</a></h2>
               <p className="market-summary">{item.summary}</p>
               <div className="market-card-meta">
-                <ul className="market-tags" aria-label="分类">
+                <ul className="market-tags" aria-label={copy.category}>
                   {item.categories.slice(0, 3).map((category) => (
-                    <li key={category}>{labelForCategory(category)}</li>
+                    <li key={category}>{categoryLabel(category, locale)}</li>
                   ))}
                 </ul>
                 <span className="market-card-arrow" aria-hidden="true">→</span>
