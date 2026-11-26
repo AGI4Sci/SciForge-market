@@ -2,15 +2,16 @@
 
 :root {
   color-scheme: light dark;
-  --ink: light-dark(#192d26, #e5eee7);
-  --muted: light-dark(#4a5e53, #b0c3b7);
-  --paper: light-dark(#f4f5ef, #131c18);
-  --card: light-dark(#fff, #1c2822);
-  --line: light-dark(#dce3d8, #34473c);
-  --pine: #183e34;
-  --accent-ink: light-dark(#183e34, #c0e5c8);
-  --pine-deep: #112e27;
-  --lime: #d9f6a4;
+  --ink: light-dark(#17263c, #edf4ff);
+  --muted: light-dark(#50647e, #aebed2);
+  --paper: light-dark(#f7f9fc, #162232);
+  --card: light-dark(#fff, #1c2a3e);
+  --header: light-dark(#f4f7fb, #111927);
+  --line: light-dark(#d6e0ee, #34475f);
+  --brand: #0068c9;
+  --accent-ink: light-dark(#0068c9, #88c4fa);
+  --brand-hover: #004f9e;
+  --brand-on-dark: #d9ebff;
   --radius: 16px;
   --shell: min(1200px, calc(100% - 64px));
 }
@@ -38,7 +39,7 @@ button, input, select { font: inherit; }
 button { cursor: pointer; }
 
 :focus-visible {
-  outline: 2px solid light-dark(#377554, #a1d8b0);
+  outline: 2px solid light-dark(#0068c9, #9bd0ff);
   outline-offset: 4px;
 }
 
@@ -60,14 +61,15 @@ button { cursor: pointer; }
   z-index: 100;
   padding: 8px 12px;
   border-radius: 8px;
-  background: var(--lime);
+  background: var(--brand-on-dark);
+  color: #17263c;
   transform: translateY(-150%);
 }
 
 .skip-link:focus { transform: none; }
 
 .site-header {
-  background: var(--card);
+  background: var(--header);
   border-bottom: 1px solid var(--line);
 }
 
@@ -92,8 +94,8 @@ button { cursor: pointer; }
   width: 35px;
   height: 35px;
   border-radius: 10px;
-  background: var(--pine);
-  color: var(--lime);
+  background: var(--brand);
+  color: var(--brand-on-dark);
   font-size: 14px;
   font-weight: 800;
 }
@@ -110,7 +112,7 @@ button { cursor: pointer; }
 }
 
 .main-nav a:hover, .main-nav a[aria-current="page"] {
-  background: light-dark(#eaf2e8, #304538);
+  background: light-dark(#e9f2fd, #283e5a);
   color: var(--accent-ink);
 }
 
@@ -145,16 +147,16 @@ button { cursor: pointer; }
   padding: 7px 17px;
   border: 1px solid transparent;
   border-radius: 8px;
-  background: var(--pine);
+  background: var(--brand);
   color: white;
   font-weight: 650;
 }
 
-.market-action:hover { background: var(--pine-deep); }
+.market-action:hover { background: var(--brand-hover); }
 
 .site-footer {
   border-top: 1px solid var(--line);
-  background: light-dark(#e9eee5, #202d25);
+  background: light-dark(#edf2f8, #1b293b);
   color: var(--accent-ink);
 }
 
