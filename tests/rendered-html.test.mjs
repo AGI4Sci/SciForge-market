@@ -18,9 +18,9 @@ test("homepage publishes all five groups and the full count", async () => {
   const html = await render("/");
   for (const expected of [
     /插件与能力目录/,
-    /45/,
-    /插件[\s\S]*11/,
-    /内置模块[\s\S]*26/,
+    /29/,
+    /插件[\s\S]*5/,
+    /内置模块[\s\S]*16/,
     /技能[\s\S]*4/,
     /模板[\s\S]*1/,
     /测试夹具[\s\S]*3/,
@@ -34,7 +34,7 @@ test("homepage publishes all five groups and the full count", async () => {
   assert.doesNotMatch(html, /复制插件 ID/);
 });
 
-test("all 45 catalog details are directly exported", async () => {
+test("all 29 catalog details are directly exported", async () => {
   for (const item of payload.items) {
     const html = await render(`/catalog/${item.slug}`);
     assert.ok(html.includes(item.title), `${item.slug}: title`);
@@ -83,7 +83,7 @@ test("help page describes the catalog and contains no install promise", async ()
   const html = await render("/install");
   assert.match(html, /目录说明/);
   assert.match(html, /暂不提供下载/);
-  assert.match(html, /45/);
+  assert.match(html, /29/);
   assert.match(html, /测试夹具/);
   assert.doesNotMatch(html, /打开扩展中心/);
   assert.doesNotMatch(html, /确认权限/);

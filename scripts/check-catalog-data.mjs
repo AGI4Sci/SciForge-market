@@ -11,7 +11,7 @@ import { resolve } from "node:path";
 const root = resolve(new URL("..", import.meta.url).pathname);
 const path = resolve(root, "lib/catalog-public.json");
 
-const expected = { plugin: 11, builtin: 26, skill: 4, template: 1, fixture: 3 };
+const expected = { plugin: 5, builtin: 16, skill: 4, template: 1, fixture: 3 };
 const allowedStatuses = new Set(["partial", "verified", "adapting", "integrated", "documented", "development", "testing"]);
 const allowedKinds = new Set(Object.keys(expected));
 const forbidden = [
@@ -33,11 +33,11 @@ const errors = [];
 const fail = (message) => errors.push(message);
 if (data.format !== 1) fail("format must be 1");
 if (data.kind !== "public-catalog") fail("kind must be public-catalog");
-if (data.total !== 45) fail(`total must be 45, got ${data.total}`);
+if (data.total !== 29) fail(`total must be 29, got ${data.total}`);
 if (!data.counts || Object.keys(expected).some((kind) => data.counts[kind] !== expected[kind])) {
   fail(`counts mismatch: ${JSON.stringify(data.counts)}`);
 }
-if (!Array.isArray(data.items) || data.items.length !== 45) fail("items must contain exactly 45 entries");
+if (!Array.isArray(data.items) || data.items.length !== 29) fail("items must contain exactly 29 entries");
 
 const ids = new Set();
 const slugs = new Set();

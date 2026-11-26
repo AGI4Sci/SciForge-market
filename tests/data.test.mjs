@@ -8,11 +8,11 @@ test("public catalog exposes exactly the five resource groups", async () => {
   const data = JSON.parse(await readFile(payloadUrl, "utf8"));
   assert.equal(data.format, 1);
   assert.equal(data.kind, "public-catalog");
-  assert.equal(data.total, 45);
-  assert.deepEqual(data.counts, { plugin: 11, builtin: 26, skill: 4, template: 1, fixture: 3 });
-  assert.equal(data.items.length, 45);
-  assert.equal(new Set(data.items.map((item) => item.slug)).size, 45);
-  assert.equal(new Set(data.items.map((item) => item.id)).size, 45);
+  assert.equal(data.total, 29);
+  assert.deepEqual(data.counts, { plugin: 5, builtin: 16, skill: 4, template: 1, fixture: 3 });
+  assert.equal(data.items.length, 29);
+  assert.equal(new Set(data.items.map((item) => item.slug)).size, 29);
+  assert.equal(new Set(data.items.map((item) => item.id)).size, 29);
 });
 
 test("every public item has curated copy and no internal fields", async () => {

@@ -1,15 +1,15 @@
 {
   "format": 1,
   "kind": "public-catalog",
-  "generatedAt": "2026-10-28T06:33:42.709967+00:00",
+  "generatedAt": "2026-11-26T07:38:44+00:00",
   "counts": {
-    "plugin": 11,
-    "builtin": 26,
+    "plugin": 5,
+    "builtin": 16,
     "skill": 4,
     "template": 1,
     "fixture": 3
   },
-  "total": 45,
+  "total": 29,
   "kindLabels": {
     "plugin": "插件",
     "builtin": "内置模块",
@@ -19,34 +19,28 @@
   },
   "items": [
     {
-      "id": "@sciforge/plugin-biology-room",
-      "slug": "biology-room",
+      "id": "@sciforge/plugin-anchored-comments",
+      "slug": "anchored-comments",
       "kind": "plugin",
-      "title": "Biology Room",
-      "summary": "面向生物数据分析的房间式工作区，用于组织分析步骤、样本信息与历史记录。",
+      "title": "Anchored Comments",
+      "summary": "把评论锚定到文件或界面目标，保留修订和产品反馈上下文。",
       "categories": [
-        "life-science",
-        "workspace"
+        "collaboration",
+        "review"
       ],
       "features": [
-        "创建或打开分析室",
-        "整理样本与分析步骤",
-        "保留可回看的工作历史"
+        "目标锚定评论",
+        "修订上下文",
+        "评论持久化"
       ],
       "scenarios": [
-        "把一组生物样本组织成可追踪的分析室",
-        "在团队中复现一次生物数据分析流程"
+        "对文档局部留下可追踪意见",
+        "把产品反馈绑定到具体界面目标"
       ],
-      "status": "adapting",
-      "statusLabel": "适配中",
-      "statusDetail": "已有隔离激活记录；真实分析室 UI 与宿主功能仍在适配。",
-      "related": [
-        {
-          "slug": "domain-biology-room",
-          "title": "Biology Room",
-          "relation": "对应内置模块"
-        }
-      ]
+      "status": "documented",
+      "statusLabel": "公开说明",
+      "statusDetail": "独立扩展已提供公开源码。本目录展示功能说明，正式发行版中的安装可用性由桌面扩展中心显示。",
+      "related": []
     },
     {
       "id": "@sciforge/plugin-change-inspector",
@@ -69,167 +63,8 @@
       ],
       "status": "adapting",
       "statusLabel": "适配中",
-      "statusDetail": "已有隔离激活记录；能力所有权和审计投影仍在适配。",
-      "related": [
-        {
-          "slug": "domain-change-inspector",
-          "title": "Change Inspector",
-          "relation": "对应内置模块"
-        }
-      ]
-    },
-    {
-      "id": "@sciforge/plugin-evidence-dag",
-      "slug": "evidence-dag",
-      "kind": "plugin",
-      "title": "证据 DAG",
-      "summary": "维护可审计的证据增量与不可变闭包，支持状态查询、审计侧链和快照产物导出。",
-      "categories": [
-        "research",
-        "evidence"
-      ],
-      "features": [
-        "追加证据增量",
-        "读取快照与闭包状态",
-        "追加审计侧链",
-        "导出快照产物"
-      ],
-      "scenarios": [
-        "为研究结论维护可追溯的证据链",
-        "把一次研究的证据固化为可复核快照"
-      ],
-      "status": "adapting",
-      "statusLabel": "适配中",
-      "statusDetail": "已有构建结果；宿主服务、Python 运行时和打包资源仍在适配。",
-      "related": [
-        {
-          "slug": "domain-evidence-dag",
-          "title": "Evidence DAG",
-          "relation": "对应内置模块"
-        }
-      ]
-    },
-    {
-      "id": "@sciforge/plugin-git-checkpoints",
-      "slug": "git-checkpoints",
-      "kind": "plugin",
-      "title": "Git 检查点",
-      "summary": "在受治理的工作区中创建、列出、预览和恢复 Git 检查点，恢复前保留救援检查点。",
-      "categories": [
-        "git",
-        "checkpoints"
-      ],
-      "features": [
-        "创建检查点",
-        "列出检查点",
-        "预览恢复差异",
-        "恢复前创建救援检查点"
-      ],
-      "scenarios": [
-        "在重要修改前保存工作区状态",
-        "回到一次已知可用的实验代码版本"
-      ],
-      "status": "partial",
-      "statusLabel": "部分功能已验证",
-      "statusDetail": "测试构建已验证安装、创建、列出、预览、恢复和生命周期；真实对话自动快照仍未验证。",
-      "related": [
-        {
-          "slug": "domain-git-checkpoints",
-          "title": "Git Checkpoints",
-          "relation": "对应内置模块"
-        }
-      ]
-    },
-    {
-      "id": "@sciforge/plugin-life-science-preview",
-      "slug": "life-science-preview",
-      "kind": "plugin",
-      "title": "Life Science Preview",
-      "summary": "在 SciForge 中预览生命科学格式与相关数据资源。",
-      "categories": [
-        "life-science",
-        "preview"
-      ],
-      "features": [
-        "生命科学格式预览",
-        "工作区预览槽位",
-        "按格式路由查看内容"
-      ],
-      "scenarios": [
-        "查看实验产生的生命科学数据文件",
-        "在分析工作区中快速预览结果"
-      ],
-      "status": "adapting",
-      "statusLabel": "适配中",
-      "statusDetail": "已有隔离激活记录；真实查看器和宿主 UI 仍在适配。",
-      "related": [
-        {
-          "slug": "domain-life-science-preview",
-          "title": "Life Science Preview",
-          "relation": "对应内置模块"
-        }
-      ]
-    },
-    {
-      "id": "@sciforge/plugin-project-dag",
-      "slug": "project-dag",
-      "kind": "plugin",
-      "title": "项目 DAG",
-      "summary": "从证据快照编译项目图，保存项目目标并读取持久化的项目状态。",
-      "categories": [
-        "research",
-        "project"
-      ],
-      "features": [
-        "编译项目图",
-        "保存项目目标",
-        "读取持久化状态"
-      ],
-      "scenarios": [
-        "把研究证据整理成项目关系图",
-        "追踪项目目标与证据之间的对应关系"
-      ],
-      "status": "adapting",
-      "statusLabel": "适配中",
-      "statusDetail": "已有构建结果；宿主服务和 Python 运行时仍在适配。",
-      "related": [
-        {
-          "slug": "domain-project-dag",
-          "title": "Project DAG",
-          "relation": "对应内置模块"
-        }
-      ]
-    },
-    {
-      "id": "@sciforge/plugin-research-checkpoints",
-      "slug": "research-checkpoints",
-      "kind": "plugin",
-      "title": "研究检查点",
-      "summary": "按工作区与线程记录可审计的研究检查点，支持开始/停止、清单、状态、恢复和旧数据导入。",
-      "categories": [
-        "research",
-        "checkpoints"
-      ],
-      "features": [
-        "开始与停止录制",
-        "读取状态和检查点清单",
-        "恢复为新检查点",
-        "预览和导入旧记录"
-      ],
-      "scenarios": [
-        "为一次可复现研究保留轮次级快照",
-        "回看某次对话对应的研究状态"
-      ],
-      "status": "adapting",
-      "statusLabel": "适配中",
-      "statusDetail": "已有隔离激活记录；真实宿主服务和事件接线仍在适配。",
-      "related": [
-        {
-          "slug": "domain-research-checkpoints",
-          "title": "Research Checkpoints",
-          "relation": "对应内置模块"
-        }
-      ]
+      "statusDetail": "独立扩展已提供公开源码，支持查看会话变更快照和文件差异。已有隔离激活记录。",
+      "related": []
     },
     {
       "id": "@sciforge/plugin-scientific-plotting",
@@ -254,13 +89,7 @@
       "status": "verified",
       "statusLabel": "测试构建已验证",
       "statusDetail": "在 SciForge Acceptance 测试构建中完成 status、map-data、render、rerun、compare、版本记录和生命周期验证；这是测试构建结果，不是正式发行版。",
-      "related": [
-        {
-          "slug": "domain-scientific-plotting",
-          "title": "Scientific Plotting",
-          "relation": "对应内置模块"
-        }
-      ]
+      "related": []
     },
     {
       "id": "@sciforge/plugin-text-stats",
@@ -311,61 +140,6 @@
       "related": []
     },
     {
-      "id": "@sciforge/plugin-visual-review",
-      "slug": "visual-review",
-      "kind": "plugin",
-      "title": "Visual Review",
-      "summary": "对图像与视觉材料进行结构化审阅、候选创建和上下文更新。",
-      "categories": [
-        "visual",
-        "review"
-      ],
-      "features": [
-        "创建审阅候选",
-        "读取图像文档",
-        "更新审阅上下文",
-        "导出审阅包"
-      ],
-      "scenarios": [
-        "对实验结果图做结构化审阅",
-        "把多轮视觉修改整理成审阅记录"
-      ],
-      "status": "adapting",
-      "statusLabel": "适配中",
-      "statusDetail": "已有隔离激活记录；真实查看器、输入和 artifact 接线仍在适配。",
-      "related": [
-        {
-          "slug": "domain-visual-review",
-          "title": "Visual Review",
-          "relation": "对应内置模块"
-        }
-      ]
-    },
-    {
-      "id": "@sciforge/domain-anchored-comments",
-      "slug": "domain-anchored-comments",
-      "kind": "builtin",
-      "title": "Anchored Comments",
-      "summary": "把评论锚定到文件或界面目标，保留修订和产品反馈上下文。",
-      "categories": [
-        "collaboration",
-        "review"
-      ],
-      "features": [
-        "目标锚定评论",
-        "修订上下文",
-        "评论持久化"
-      ],
-      "scenarios": [
-        "对文档局部留下可追踪意见",
-        "把产品反馈绑定到具体界面目标"
-      ],
-      "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": []
-    },
-    {
       "id": "@sciforge/domain-artifact-versions",
       "slug": "domain-artifact-versions",
       "kind": "builtin",
@@ -386,38 +160,8 @@
       ],
       "status": "integrated",
       "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
+      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
       "related": []
-    },
-    {
-      "id": "@sciforge/domain-biology-room",
-      "slug": "domain-biology-room",
-      "kind": "builtin",
-      "title": "Biology Room",
-      "summary": "生物分析室的领域服务，管理房间、样本、历史和持久状态。",
-      "categories": [
-        "life-science",
-        "workspace"
-      ],
-      "features": [
-        "房间创建与打开",
-        "样本与分析历史",
-        "持久化状态"
-      ],
-      "scenarios": [
-        "组织生物样本分析",
-        "保留实验分析过程"
-      ],
-      "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": [
-        {
-          "slug": "biology-room",
-          "title": "Biology Room",
-          "relation": "对应运行时插件"
-        }
-      ]
     },
     {
       "id": "@sciforge/domain-browser-preview",
@@ -440,38 +184,8 @@
       ],
       "status": "integrated",
       "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
+      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
       "related": []
-    },
-    {
-      "id": "@sciforge/domain-change-inspector",
-      "slug": "domain-change-inspector",
-      "kind": "builtin",
-      "title": "Change Inspector",
-      "summary": "提供会话变更检查器、差异渲染和右侧审阅面板。",
-      "categories": [
-        "workspace",
-        "inspection"
-      ],
-      "features": [
-        "会话变更快照",
-        "统一差异渲染",
-        "审阅面板"
-      ],
-      "scenarios": [
-        "审阅 Agent 修改",
-        "检查工作区差异"
-      ],
-      "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": [
-        {
-          "slug": "change-inspector",
-          "title": "变更检查器",
-          "relation": "对应运行时插件"
-        }
-      ]
     },
     {
       "id": "@sciforge/domain-collaboration",
@@ -493,7 +207,7 @@
       ],
       "status": "integrated",
       "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
+      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
       "related": []
     },
     {
@@ -517,55 +231,7 @@
       ],
       "status": "integrated",
       "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": []
-    },
-    {
-      "id": "@sciforge/domain-content-space",
-      "slug": "domain-content-space",
-      "kind": "builtin",
-      "title": "Content Space",
-      "summary": "面向文件与对象的 Provider 中立内容空间和资源引用。",
-      "categories": [
-        "content",
-        "workspace"
-      ],
-      "features": [
-        "统一资源模型",
-        "Provider SPI",
-        "可移植引用"
-      ],
-      "scenarios": [
-        "组织跨来源的研究资料",
-        "把文件与对象纳入同一内容空间"
-      ],
-      "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": []
-    },
-    {
-      "id": "@sciforge/domain-content-space-mock-provider",
-      "slug": "domain-content-space-mock-provider",
-      "kind": "builtin",
-      "title": "Content Space local mock Provider",
-      "summary": "仅用于开发和契约测试的本地 Content Space Provider。",
-      "categories": [
-        "development",
-        "testing"
-      ],
-      "features": [
-        "内存内容 Provider",
-        "契约测试支持",
-        "不依赖外部凭据"
-      ],
-      "scenarios": [
-        "开发时验证内容空间接口",
-        "运行离线契约测试"
-      ],
-      "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
+      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
       "related": []
     },
     {
@@ -589,31 +255,7 @@
       ],
       "status": "integrated",
       "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": []
-    },
-    {
-      "id": "@sciforge/domain-dataset-api",
-      "slug": "domain-dataset-api",
-      "kind": "builtin",
-      "title": "Dataset API",
-      "summary": "管理 API 数据集源、访问和工作区内的数据准备操作。",
-      "categories": [
-        "data",
-        "dataset"
-      ],
-      "features": [
-        "数据源注册",
-        "数据访问与过滤",
-        "工作区数据准备"
-      ],
-      "scenarios": [
-        "连接外部数据集",
-        "在分析前准备和筛选数据"
-      ],
-      "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
+      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
       "related": []
     },
     {
@@ -637,14 +279,8 @@
       ],
       "status": "integrated",
       "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": [
-        {
-          "slug": "evidence-dag",
-          "title": "证据 DAG",
-          "relation": "对应运行时插件"
-        }
-      ]
+      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "related": []
     },
     {
       "id": "@sciforge/domain-git-checkpoints",
@@ -667,14 +303,8 @@
       ],
       "status": "integrated",
       "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": [
-        {
-          "slug": "git-checkpoints",
-          "title": "Git 检查点",
-          "relation": "对应运行时插件"
-        }
-      ]
+      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "related": []
     },
     {
       "id": "@sciforge/domain-identity-access",
@@ -697,109 +327,7 @@
       ],
       "status": "integrated",
       "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": []
-    },
-    {
-      "id": "@sciforge/domain-life-science-preview",
-      "slug": "domain-life-science-preview",
-      "kind": "builtin",
-      "title": "Life Science Preview",
-      "summary": "生命科学格式的预览清单、路由和查看器支持。",
-      "categories": [
-        "life-science",
-        "preview"
-      ],
-      "features": [
-        "格式预览清单",
-        "格式路由",
-        "查看器支持"
-      ],
-      "scenarios": [
-        "查看生命科学数据",
-        "在分析流程中预览结果"
-      ],
-      "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": [
-        {
-          "slug": "life-science-preview",
-          "title": "Life Science Preview",
-          "relation": "对应运行时插件"
-        }
-      ]
-    },
-    {
-      "id": "@sciforge/domain-opencontent-connector",
-      "slug": "domain-opencontent-connector",
-      "kind": "builtin",
-      "title": "OpenContent Connector",
-      "summary": "OpenContent 账户连接、Principal 绑定和令牌使用。",
-      "categories": [
-        "integration",
-        "content"
-      ],
-      "features": [
-        "账户连接",
-        "Principal 绑定",
-        "安全令牌使用"
-      ],
-      "scenarios": [
-        "连接已有 OpenContent 账户",
-        "在授权范围内读取外部内容"
-      ],
-      "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": []
-    },
-    {
-      "id": "@sciforge/domain-opencontent-content-space-provider",
-      "slug": "domain-opencontent-content-space-provider",
-      "kind": "builtin",
-      "title": "OpenContent Content Space Provider",
-      "summary": "把 OpenContent 连接器适配为 Content Space Provider。",
-      "categories": [
-        "integration",
-        "content"
-      ],
-      "features": [
-        "Provider 适配",
-        "资源枚举",
-        "授权内容访问"
-      ],
-      "scenarios": [
-        "在内容空间中浏览 OpenContent 资料",
-        "复用现有账户授权"
-      ],
-      "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": []
-    },
-    {
-      "id": "@sciforge/domain-paper-radar",
-      "slug": "domain-paper-radar",
-      "kind": "builtin",
-      "title": "Paper Radar",
-      "summary": "论文检索、排序、摘要与追踪面板。",
-      "categories": [
-        "research",
-        "papers"
-      ],
-      "features": [
-        "论文检索",
-        "排序与摘要",
-        "追踪面板"
-      ],
-      "scenarios": [
-        "跟踪研究领域新论文",
-        "整理文献线索"
-      ],
-      "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
+      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
       "related": []
     },
     {
@@ -823,37 +351,7 @@
       ],
       "status": "integrated",
       "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": [
-        {
-          "slug": "project-dag",
-          "title": "项目 DAG",
-          "relation": "对应运行时插件"
-        }
-      ]
-    },
-    {
-      "id": "@sciforge/domain-remote-ssh",
-      "slug": "domain-remote-ssh",
-      "kind": "builtin",
-      "title": "Remote SSH",
-      "summary": "连接远程实验环境的 SSH/VM 工作流。",
-      "categories": [
-        "remote",
-        "infrastructure"
-      ],
-      "features": [
-        "远程环境连接",
-        "VM 工作流",
-        "会话隔离"
-      ],
-      "scenarios": [
-        "在实验室远程环境运行任务",
-        "连接隔离计算资源"
-      ],
-      "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
+      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
       "related": []
     },
     {
@@ -877,14 +375,8 @@
       ],
       "status": "integrated",
       "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": [
-        {
-          "slug": "research-checkpoints",
-          "title": "研究检查点",
-          "relation": "对应运行时插件"
-        }
-      ]
+      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "related": []
     },
     {
       "id": "@sciforge/domain-research-dossier",
@@ -907,62 +399,8 @@
       ],
       "status": "integrated",
       "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
+      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
       "related": []
-    },
-    {
-      "id": "@sciforge/domain-scientific-compute",
-      "slug": "domain-scientific-compute",
-      "kind": "builtin",
-      "title": "Scientific Compute",
-      "summary": "本地计算任务管理器、调度器和结果收集。",
-      "categories": [
-        "science",
-        "compute"
-      ],
-      "features": [
-        "计算任务管理",
-        "调度与监控",
-        "结果收集"
-      ],
-      "scenarios": [
-        "运行可复现科学计算",
-        "批量处理分析任务"
-      ],
-      "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": []
-    },
-    {
-      "id": "@sciforge/domain-scientific-plotting",
-      "slug": "domain-scientific-plotting",
-      "kind": "builtin",
-      "title": "Scientific Plotting",
-      "summary": "科学绘图的状态、数据映射、渲染、重跑和比对。",
-      "categories": [
-        "science",
-        "plotting"
-      ],
-      "features": [
-        "绘图环境状态",
-        "数据映射",
-        "渲染与比对"
-      ],
-      "scenarios": [
-        "制作论文图",
-        "比较绘图结果"
-      ],
-      "status": "integrated",
-      "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": [
-        {
-          "slug": "scientific-plotting",
-          "title": "Scientific Plotting",
-          "relation": "对应运行时插件"
-        }
-      ]
     },
     {
       "id": "@sciforge/domain-terminal",
@@ -985,38 +423,102 @@
       ],
       "status": "integrated",
       "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
+      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
       "related": []
     },
     {
-      "id": "@sciforge/domain-visual-review",
-      "slug": "domain-visual-review",
+      "id": "@sciforge/domain-biology-workbench",
+      "slug": "domain-biology-workbench",
       "kind": "builtin",
-      "title": "Visual Review",
-      "summary": "结构化图像审阅、revision 服务和右侧面板。",
+      "title": "Biology Workbench",
+      "summary": "在工作区内组织生物分析和生命科学文件预览。",
       "categories": [
-        "visual",
-        "review"
+        "life-science",
+        "workspace"
       ],
       "features": [
-        "图像审阅文档",
-        "revision 服务",
-        "审阅面板"
+        "房间与分析历史",
+        "生命科学文件预览",
+        "工作区状态持久化"
       ],
       "scenarios": [
-        "审阅实验结果图",
-        "保留视觉修改历史"
+        "按项目整理分析过程",
+        "在工作区中查看分析文件"
       ],
       "status": "integrated",
       "statusLabel": "随软件集成",
-      "statusDetail": "随桌面应用集成，不作为独立插件安装。",
-      "related": [
-        {
-          "slug": "visual-review",
-          "title": "Visual Review",
-          "relation": "对应运行时插件"
-        }
-      ]
+      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "related": []
+    },
+    {
+      "id": "@sciforge/domain-knowledge-net",
+      "slug": "domain-knowledge-net",
+      "kind": "builtin",
+      "title": "Knowledge Net",
+      "summary": "围绕文献笔记和数据资源建立可检索的知识网络。",
+      "categories": [
+        "research",
+        "workspace"
+      ],
+      "features": [
+        "组织文献笔记",
+        "关联数据资源",
+        "检索与导出"
+      ],
+      "scenarios": [
+        "整理文献综述材料",
+        "复查笔记对应的数据来源"
+      ],
+      "status": "integrated",
+      "statusLabel": "随软件集成",
+      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "related": []
+    },
+    {
+      "id": "@sciforge/domain-siyuan-content-space-provider",
+      "slug": "domain-siyuan-content-space-provider",
+      "kind": "builtin",
+      "title": "云笔记",
+      "summary": "在桌面工作区用嵌入式思源编辑器查看和编辑云笔记。",
+      "categories": [
+        "collaboration",
+        "workspace"
+      ],
+      "features": [
+        "浏览云笔记",
+        "在嵌入式编辑器中查看和编辑文档"
+      ],
+      "scenarios": [
+        "在项目工作区整理共享笔记",
+        "在笔记中补充协作记录"
+      ],
+      "status": "integrated",
+      "statusLabel": "随软件集成",
+      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "related": []
+    },
+    {
+      "id": "@sciforge/domain-user-decisions",
+      "slug": "domain-user-decisions",
+      "kind": "builtin",
+      "title": "用户决策",
+      "summary": "在 Agent 工作中收集结构化决策并继续当前工作。",
+      "categories": [
+        "interaction",
+        "workflow"
+      ],
+      "features": [
+        "显示结构化问题",
+        "在可移动问卷中提交选择"
+      ],
+      "scenarios": [
+        "为 Agent 选择后续方案",
+        "在填写问卷时查看工作区上下文"
+      ],
+      "status": "integrated",
+      "statusLabel": "随软件集成",
+      "statusDetail": "该模块已集成到公开客户端源码。可用功能随桌面发行版和配置而定。",
+      "related": []
     },
     {
       "id": "skill:openspec-apply-change",
